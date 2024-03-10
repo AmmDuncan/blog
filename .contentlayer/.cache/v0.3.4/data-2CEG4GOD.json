@@ -1,0 +1,66 @@
+{
+  "cacheItemsMap": {
+    "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx": {
+      "document": {
+        "title": "Provide / Inject - How to drill props in Vue without actually prop drilling",
+        "author": "Ammiel Yawson",
+        "created_at": "2022-09-22T00:00:00.000Z",
+        "primary_tag": "CSS",
+        "featured": true,
+        "feature_image": "/images/provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling/featured.webp",
+        "tags": [
+          "CSS",
+          "Web Development"
+        ],
+        "body": {
+          "raw": "\n## What is prop drilling?\n\nProp drilling is a term used in component-driven frontend development where a parent component sends props through child components that have no use for the props except to pass them down to be used by a deeply nested component.\n\n## Example\n\nYou’re building a Vue web application where the buttons have a blue background and white colored text. There’s one exception though. The button has a red background when used anywhere inside a modal.\n\n![Labelled Illustration](/images/provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling/labelled-illustration.png)\n\nTo know when to change the color to red, the Button takes a prop, `inModal`; a boolean value.\n\n```js\n// ButtonComponent.vue\nexport default {\n\t...\n\tprops: [ \"inModal\" ],\n}\n\n```\n\nTo pass the prop to the button in the Modal, we need to pass the prop to the Card component first. Which then passes the prop to the Button.",
+          "html": "<h2>What is prop drilling?</h2>\n<p>Prop drilling is a term used in component-driven frontend development where a parent component sends props through child components that have no use for the props except to pass them down to be used by a deeply nested component.</p>\n<h2>Example</h2>\n<p>You’re building a Vue web application where the buttons have a blue background and white colored text. There’s one exception though. The button has a red background when used anywhere inside a modal.</p>\n<p><img src=\"/images/provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling/labelled-illustration.png\" alt=\"Labelled Illustration\"></p>\n<p>To know when to change the color to red, the Button takes a prop, <code>inModal</code>; a boolean value.</p>\n<pre><code class=\"language-js\">// ButtonComponent.vue\nexport default {\n\t...\n\tprops: [ \"inModal\" ],\n}\n\n</code></pre>\n<p>To pass the prop to the button in the Modal, we need to pass the prop to the Card component first. Which then passes the prop to the Button.</p>"
+        },
+        "_id": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx",
+        "_raw": {
+          "sourceFilePath": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx",
+          "sourceFileName": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling"
+        },
+        "type": "Post",
+        "slug": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx"
+      },
+      "documentHash": "1710072096816",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx": {
+      "document": {
+        "title": "The CSS Box model. The foundation of layouts on the web.",
+        "author": "Ammiel Yawson",
+        "created_at": "2022-02-15T00:00:00.000Z",
+        "primary_tag": "CSS",
+        "featured": true,
+        "feature_image": "/images/the-css-box-model-the-foundation-of-layouts-on-the-web/featured.webp",
+        "tags": [
+          "CSS",
+          "Web Development"
+        ],
+        "body": {
+          "raw": "\nDepending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.",
+          "html": "<p>Depending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.</p>"
+        },
+        "_id": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
+        "_raw": {
+          "sourceFilePath": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
+          "sourceFileName": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "the-css-box-model-the-foundation-of-layouts-on-the-web"
+        },
+        "type": "Post",
+        "slug": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx"
+      },
+      "documentHash": "1710065650440",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "3+ JavaScript String methods you’ll use often and where you’ll need them.",
+  "author": "Ammiel Yawson",
+  "created_at": "2022-01-24T00:00:00.000Z",
+  "primary_tag": "JavaScript",
+  "featured": true,
+  "feature_image": "/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/featured.webp",
+  "tags": [
+    "JavaScript",
+    "Web Development"
+  ],
+  "body": {
+    "raw": "",
+    "html": ""
+  },
+  "_id": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+  "_raw": {
+    "sourceFilePath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+    "sourceFileName": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+    "sourceFileDir": ".",
+    "contentType": "mdx",
+    "flattenedPath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them"
+  },
+  "type": "Post",
+  "slug": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them",
+  "reading_time": 1
+}

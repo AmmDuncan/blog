@@ -1,0 +1,132 @@
+{
+  "cacheItemsMap": {
+    "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx": {
+      "document": {
+        "title": "Provide / Inject - How to drill props in Vue without actually prop drilling",
+        "author": "Ammiel Yawson",
+        "created_at": "2022-09-22T00:00:00.000Z",
+        "primary_tag": "Vue",
+        "featured": true,
+        "feature_image": "/images/provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling/featured.webp",
+        "tags": [
+          "Vue",
+          "Web Development"
+        ],
+        "body": {
+          "raw": "\n## What is prop drilling?\n\nProp drilling is a term used in component-driven frontend development where a parent component sends props through child components that have no use for the props except to pass them down to be used by a deeply nested component.\n\n## Example\n\nYou’re building a Vue web application where the buttons have a blue background and white colored text. There’s one exception though. The button has a red background when used anywhere inside a modal.\n\n![Labelled Illustration](/images/provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling/labelled-illustration.png)\n\nTo know when to change the color to red, the Button takes a prop, `inModal`; a boolean value.\n\n```js\n// ButtonComponent.vue\nexport default {\n\t// ...\n\tprops: [ \"inModal\" ]\n}\n\n```\n\nTo pass the prop to the button in the Modal, we need to pass the prop to the Card component first. Which then passes the prop to the Button.\n\nNow, for a two-step drill like this, there’s no pain in drilling the prop. Imagine the Card component was nested in other components inside the Modal component; `CardListComponent`  → `CartContentComponent` → `CartComponent`, etc. Then passing the inModal props through each of these in-between components would be a pain.\n\nTo battle the need to pass the props through components that have no use for them, Vue provides the Provide / Inject feature. It involves a parent component exposing labeled values, and making them accessible to every child, grandchild, or even great-grandchild component.\n\nHere’s how you can use the Provide / Inject feature to eliminate prop drilling in our example.\n\n```js\n// ModalComponent.vue\nexport default {\n\t// ...\n\tprovide: { inModal: true }\n}\n```\n\n```js\n// ButtonComponent.vue\nexport default {\n\t// ...\n\tinject: [ \"inModal\" ]\n}\n```\n\nSo the ModalComponent says, assign the value true to the label inModal and make it available to all descendants. The ButtonComponent says, inject whatever value my ancestors labeled inModal.\n\nIf no ancestor of Button provides a value with the label inModal, you’ll see a warning in your console.\n\n```text\n[Vue warn]: injection \"inModal\" not found.\n```\n\n## [Optional] Alternate Provide Syntax\nWhen provide is set to an object, you can provide only static values to the nested components. However, you write provide as a method that returns an object when you need to make a reactive value available. In the method, you can access the this keyword; assuming you’re using the options API.\n\nProvide / Inject can help you avoid prop drilling and write cleaner component compositions as a result. You can check the [official docs](https://vuejs.org/guide/components/provide-inject.html#prop-drilling) for more information or clarification if you need any.",
+          "html": "<h2>What is prop drilling?</h2>\n<p>Prop drilling is a term used in component-driven frontend development where a parent component sends props through child components that have no use for the props except to pass them down to be used by a deeply nested component.</p>\n<h2>Example</h2>\n<p>You’re building a Vue web application where the buttons have a blue background and white colored text. There’s one exception though. The button has a red background when used anywhere inside a modal.</p>\n<p><img src=\"/images/provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling/labelled-illustration.png\" alt=\"Labelled Illustration\"></p>\n<p>To know when to change the color to red, the Button takes a prop, <code>inModal</code>; a boolean value.</p>\n<pre><code class=\"language-js\">// ButtonComponent.vue\nexport default {\n\t// ...\n\tprops: [ \"inModal\" ]\n}\n\n</code></pre>\n<p>To pass the prop to the button in the Modal, we need to pass the prop to the Card component first. Which then passes the prop to the Button.</p>\n<p>Now, for a two-step drill like this, there’s no pain in drilling the prop. Imagine the Card component was nested in other components inside the Modal component; <code>CardListComponent</code>  → <code>CartContentComponent</code> → <code>CartComponent</code>, etc. Then passing the inModal props through each of these in-between components would be a pain.</p>\n<p>To battle the need to pass the props through components that have no use for them, Vue provides the Provide / Inject feature. It involves a parent component exposing labeled values, and making them accessible to every child, grandchild, or even great-grandchild component.</p>\n<p>Here’s how you can use the Provide / Inject feature to eliminate prop drilling in our example.</p>\n<pre><code class=\"language-js\">// ModalComponent.vue\nexport default {\n\t// ...\n\tprovide: { inModal: true }\n}\n</code></pre>\n<pre><code class=\"language-js\">// ButtonComponent.vue\nexport default {\n\t// ...\n\tinject: [ \"inModal\" ]\n}\n</code></pre>\n<p>So the ModalComponent says, assign the value true to the label inModal and make it available to all descendants. The ButtonComponent says, inject whatever value my ancestors labeled inModal.</p>\n<p>If no ancestor of Button provides a value with the label inModal, you’ll see a warning in your console.</p>\n<pre><code class=\"language-text\">[Vue warn]: injection \"inModal\" not found.\n</code></pre>\n<h2>[Optional] Alternate Provide Syntax</h2>\n<p>When provide is set to an object, you can provide only static values to the nested components. However, you write provide as a method that returns an object when you need to make a reactive value available. In the method, you can access the this keyword; assuming you’re using the options API.</p>\n<p>Provide / Inject can help you avoid prop drilling and write cleaner component compositions as a result. You can check the <a href=\"https://vuejs.org/guide/components/provide-inject.html#prop-drilling\">official docs</a> for more information or clarification if you need any.</p>"
+        },
+        "_id": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx",
+        "_raw": {
+          "sourceFilePath": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx",
+          "sourceFileName": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling"
+        },
+        "type": "Post",
+        "slug": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling",
+        "reading_time": 2
+      },
+      "documentHash": "1710087869068",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx": {
+      "document": {
+        "title": "The CSS Box model. The foundation of layouts on the web.",
+        "author": "Ammiel Yawson",
+        "created_at": "2022-02-15T00:00:00.000Z",
+        "primary_tag": "CSS",
+        "featured": true,
+        "feature_image": "/images/the-css-box-model-the-foundation-of-layouts-on-the-web/featured.webp",
+        "tags": [
+          "CSS",
+          "Web Development"
+        ],
+        "body": {
+          "raw": "Depending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.\n\nWe’ll illustrate this model with a relatable situation.\n\nYour sister’s birthday is next Saturday. You plan on getting her the iPhone 13 you know she so wants. However, you want it to be a surprise. So after buying the phone, you take it out of its box and put it into a bigger one; you don’t want her to guess your gift right away.\n\nThere is one problem. The screen might break if you allow the phone to wobble about in the box; or if someone drops it. So you put some stuffing around the phone in the box to soften the blow if it falls.\n\nYou bring your gift to where all the others are. But you don’t want yours to blend in with the others. So you put some distance between yours and the others.\n\nNow back to CSS.\n\n![Box Model](/images/the-css-box-model-the-foundation-of-layouts-on-the-web/box-model.png)\n\nThe main idea of the Box Model is that every element on an HTML page is a box🎁. Where depending on how fragile the item is, you put a lot of stuffing (padding) around it or no stuffing at all. And depending on how much you want it to stand out, you put some distance between your gift and others around it.\n\nIn CSS,\n\n- The content of an element is the item inside the box.\n- The padding of an element is the stuffing around the item.\n- The border is the walls of the gift box.\n- The margin is the space between the gift box and other gifts boxes.\n\nThat’s it. That’s the CSS box model.\n\nLet me know your thoughts.\n\nTwitter: [@ammduncan](https://www.twitter.com/ammduncan)\n\nLinkedIn: [Ammiel Yawson](https://www.linkedin.com/in/ammiel-yawson-098902124/)",
+          "html": "<p>Depending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.</p>\n<p>We’ll illustrate this model with a relatable situation.</p>\n<p>Your sister’s birthday is next Saturday. You plan on getting her the iPhone 13 you know she so wants. However, you want it to be a surprise. So after buying the phone, you take it out of its box and put it into a bigger one; you don’t want her to guess your gift right away.</p>\n<p>There is one problem. The screen might break if you allow the phone to wobble about in the box; or if someone drops it. So you put some stuffing around the phone in the box to soften the blow if it falls.</p>\n<p>You bring your gift to where all the others are. But you don’t want yours to blend in with the others. So you put some distance between yours and the others.</p>\n<p>Now back to CSS.</p>\n<p><img src=\"/images/the-css-box-model-the-foundation-of-layouts-on-the-web/box-model.png\" alt=\"Box Model\"></p>\n<p>The main idea of the Box Model is that every element on an HTML page is a box🎁. Where depending on how fragile the item is, you put a lot of stuffing (padding) around it or no stuffing at all. And depending on how much you want it to stand out, you put some distance between your gift and others around it.</p>\n<p>In CSS,</p>\n<ul>\n<li>The content of an element is the item inside the box.</li>\n<li>The padding of an element is the stuffing around the item.</li>\n<li>The border is the walls of the gift box.</li>\n<li>The margin is the space between the gift box and other gifts boxes.</li>\n</ul>\n<p>That’s it. That’s the CSS box model.</p>\n<p>Let me know your thoughts.</p>\n<p>Twitter: <a href=\"https://www.twitter.com/ammduncan\">@ammduncan</a></p>\n<p>LinkedIn: <a href=\"https://www.linkedin.com/in/ammiel-yawson-098902124/\">Ammiel Yawson</a></p>"
+        },
+        "_id": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
+        "_raw": {
+          "sourceFilePath": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
+          "sourceFileName": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "the-css-box-model-the-foundation-of-layouts-on-the-web"
+        },
+        "type": "Post",
+        "slug": "the-css-box-model-the-foundation-of-layouts-on-the-web",
+        "reading_time": 2
+      },
+      "documentHash": "1710087075834",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "recipe-for-an-effective-website.mdx": {
+      "document": {
+        "title": "Recipe for an Effective Marketing Website / Landing Page",
+        "author": "Ammiel Yawson",
+        "created_at": "2022-08-16T00:00:00.000Z",
+        "primary_tag": "Web Development",
+        "featured": true,
+        "feature_image": "/images/recipe-for-an-effective-website/featured.webp",
+        "tags": [
+          "Web Development",
+          "CSS"
+        ],
+        "body": {
+          "raw": "\nA website is a tool meant to serve you and will do just that if built with a goal. When getting a website, have a target that the website can help you achieve. Do not get one only because competitors have some.\n\nBuilding a website is like getting an office space. You consider the location, how accessible it is to your target audience, does the appearance align with the nature of your audience? and a lot of other viable considerations.\n\nA clear purpose is only the first requirement of an effective website. You need one more ingredient to be able to maximize the benefits you reap from a website.\n\n## Clear Purpose + ??? = Working Content\n\nYou are browsing the web, looking for a hair product. You come across two brands that sell hair products; you have never heard of either. You decide to check out their websites.\n\n![Brand A vs Brand B](/images/recipe-for-an-effective-website/brands.png)\n\n- Brand A shows testimonials of past users' sentiments on their products.\n- Brand B, however, features our team section but not a testimonial section.\n\nBetween a testimonial section and our team section, which do you think is a trust-building component on a website?\n\n👀\n\nThe answer is both.\n\nA testimonial section shows a user (usually positive) feedback from other people who have used your product/service. A testimonial helps build trust for almost any type of business you can think of.\n\nOur team section favors service-oriented businesses more. It builds trust by putting faces to your service which makes it easier for people to connect with.\n\nAlthough both elements help build trust with visitors, I’m guessing you care more about what other users say about the hair product than who made the product—unless they are family or friends.\n\nBrand B chose the right element for the purpose, but not necessarily the best for the product. Brand A’s testimonial section, however, reduces the level of risk you are about to take. Others have used it and are okay. You can probably use it too.\n\n💭 CLEAR PURPOSE + STRATEGY = WORKING CONTENT\n\nAs a business, brand, or individual thinking about getting a website, it is your job to know why you want it. However, the strategy is the responsibility of whom you choose to help you achieve your WHY; designer, developer, or agency.\n\nA clear strategy will help you know what information to gather for the website.\n\n",
+          "html": "<p>A website is a tool meant to serve you and will do just that if built with a goal. When getting a website, have a target that the website can help you achieve. Do not get one only because competitors have some.</p>\n<p>Building a website is like getting an office space. You consider the location, how accessible it is to your target audience, does the appearance align with the nature of your audience? and a lot of other viable considerations.</p>\n<p>A clear purpose is only the first requirement of an effective website. You need one more ingredient to be able to maximize the benefits you reap from a website.</p>\n<h2>Clear Purpose + ??? = Working Content</h2>\n<p>You are browsing the web, looking for a hair product. You come across two brands that sell hair products; you have never heard of either. You decide to check out their websites.</p>\n<p><img src=\"/images/recipe-for-an-effective-website/brands.png\" alt=\"Brand A vs Brand B\"></p>\n<ul>\n<li>Brand A shows testimonials of past users' sentiments on their products.</li>\n<li>Brand B, however, features our team section but not a testimonial section.</li>\n</ul>\n<p>Between a testimonial section and our team section, which do you think is a trust-building component on a website?</p>\n<p>👀</p>\n<p>The answer is both.</p>\n<p>A testimonial section shows a user (usually positive) feedback from other people who have used your product/service. A testimonial helps build trust for almost any type of business you can think of.</p>\n<p>Our team section favors service-oriented businesses more. It builds trust by putting faces to your service which makes it easier for people to connect with.</p>\n<p>Although both elements help build trust with visitors, I’m guessing you care more about what other users say about the hair product than who made the product—unless they are family or friends.</p>\n<p>Brand B chose the right element for the purpose, but not necessarily the best for the product. Brand A’s testimonial section, however, reduces the level of risk you are about to take. Others have used it and are okay. You can probably use it too.</p>\n<p>💭 CLEAR PURPOSE + STRATEGY = WORKING CONTENT</p>\n<p>As a business, brand, or individual thinking about getting a website, it is your job to know why you want it. However, the strategy is the responsibility of whom you choose to help you achieve your WHY; designer, developer, or agency.</p>\n<p>A clear strategy will help you know what information to gather for the website.</p>"
+        },
+        "_id": "recipe-for-an-effective-website.mdx",
+        "_raw": {
+          "sourceFilePath": "recipe-for-an-effective-website.mdx",
+          "sourceFileName": "recipe-for-an-effective-website.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "recipe-for-an-effective-website"
+        },
+        "type": "Post",
+        "slug": "recipe-for-an-effective-website",
+        "reading_time": 2
+      },
+      "documentHash": "1710088350584",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx": {
+      "document": {
+        "title": "3+ JavaScript String methods you’ll use often and where you’ll need them.",
+        "author": "Ammiel Yawson",
+        "created_at": "2022-01-24T00:00:00.000Z",
+        "primary_tag": "JavaScript",
+        "featured": true,
+        "feature_image": "/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/featured.webp",
+        "tags": [
+          "JavaScript",
+          "Web Development"
+        ],
+        "body": {
+          "raw": "",
+          "html": ""
+        },
+        "_id": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+        "_raw": {
+          "sourceFilePath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+          "sourceFileName": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them"
+        },
+        "type": "Post",
+        "slug": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them",
+        "reading_time": 1
+      },
+      "documentHash": "1710088695483",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    }
+  }
+}
