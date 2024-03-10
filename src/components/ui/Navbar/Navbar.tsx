@@ -1,4 +1,3 @@
-import { cn } from '@/libs';
 import Logo from '@/assets/svgs/logo.svg';
 import { Text } from '..';
 import Link from 'next/link';

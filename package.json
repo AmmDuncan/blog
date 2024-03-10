@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.0",
     "contentlayer": "^0.3.4",
     "dayjs": "^1.11.10",

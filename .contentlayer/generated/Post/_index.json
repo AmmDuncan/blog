@@ -1,5 +1,32 @@
 [
   {
+    "title": "3+ JavaScript String methods you’ll use often and where you’ll need them.",
+    "author": "Ammiel Yawson",
+    "created_at": "2022-01-24T00:00:00.000Z",
+    "primary_tag": "JavaScript",
+    "featured": true,
+    "feature_image": "/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/featured.webp",
+    "tags": [
+      "JavaScript",
+      "Web Development"
+    ],
+    "body": {
+      "raw": "",
+      "html": ""
+    },
+    "_id": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+    "_raw": {
+      "sourceFilePath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+      "sourceFileName": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them"
+    },
+    "type": "Post",
+    "slug": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them",
+    "reading_time": 1
+  },
+  {
     "title": "Provide / Inject - How to drill props in Vue without actually prop drilling",
     "author": "Ammiel Yawson",
     "created_at": "2022-09-22T00:00:00.000Z",
@@ -24,33 +51,6 @@
     },
     "type": "Post",
     "slug": "provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling",
-    "reading_time": 2
-  },
-  {
-    "title": "The CSS Box model. The foundation of layouts on the web.",
-    "author": "Ammiel Yawson",
-    "created_at": "2022-02-15T00:00:00.000Z",
-    "primary_tag": "CSS",
-    "featured": true,
-    "feature_image": "/images/the-css-box-model-the-foundation-of-layouts-on-the-web/featured.webp",
-    "tags": [
-      "CSS",
-      "Web Development"
-    ],
-    "body": {
-      "raw": "Depending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.\n\nWe’ll illustrate this model with a relatable situation.\n\nYour sister’s birthday is next Saturday. You plan on getting her the iPhone 13 you know she so wants. However, you want it to be a surprise. So after buying the phone, you take it out of its box and put it into a bigger one; you don’t want her to guess your gift right away.\n\nThere is one problem. The screen might break if you allow the phone to wobble about in the box; or if someone drops it. So you put some stuffing around the phone in the box to soften the blow if it falls.\n\nYou bring your gift to where all the others are. But you don’t want yours to blend in with the others. So you put some distance between yours and the others.\n\nNow back to CSS.\n\n![Box Model](/images/the-css-box-model-the-foundation-of-layouts-on-the-web/box-model.png)\n\nThe main idea of the Box Model is that every element on an HTML page is a box🎁. Where depending on how fragile the item is, you put a lot of stuffing (padding) around it or no stuffing at all. And depending on how much you want it to stand out, you put some distance between your gift and others around it.\n\nIn CSS,\n\n- The content of an element is the item inside the box.\n- The padding of an element is the stuffing around the item.\n- The border is the walls of the gift box.\n- The margin is the space between the gift box and other gifts boxes.\n\nThat’s it. That’s the CSS box model.\n\nLet me know your thoughts.\n\nTwitter: [@ammduncan](https://www.twitter.com/ammduncan)\n\nLinkedIn: [Ammiel Yawson](https://www.linkedin.com/in/ammiel-yawson-098902124/)",
-      "html": "<p>Depending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.</p>\n<p>We’ll illustrate this model with a relatable situation.</p>\n<p>Your sister’s birthday is next Saturday. You plan on getting her the iPhone 13 you know she so wants. However, you want it to be a surprise. So after buying the phone, you take it out of its box and put it into a bigger one; you don’t want her to guess your gift right away.</p>\n<p>There is one problem. The screen might break if you allow the phone to wobble about in the box; or if someone drops it. So you put some stuffing around the phone in the box to soften the blow if it falls.</p>\n<p>You bring your gift to where all the others are. But you don’t want yours to blend in with the others. So you put some distance between yours and the others.</p>\n<p>Now back to CSS.</p>\n<p><img src=\"/images/the-css-box-model-the-foundation-of-layouts-on-the-web/box-model.png\" alt=\"Box Model\"></p>\n<p>The main idea of the Box Model is that every element on an HTML page is a box🎁. Where depending on how fragile the item is, you put a lot of stuffing (padding) around it or no stuffing at all. And depending on how much you want it to stand out, you put some distance between your gift and others around it.</p>\n<p>In CSS,</p>\n<ul>\n<li>The content of an element is the item inside the box.</li>\n<li>The padding of an element is the stuffing around the item.</li>\n<li>The border is the walls of the gift box.</li>\n<li>The margin is the space between the gift box and other gifts boxes.</li>\n</ul>\n<p>That’s it. That’s the CSS box model.</p>\n<p>Let me know your thoughts.</p>\n<p>Twitter: <a href=\"https://www.twitter.com/ammduncan\">@ammduncan</a></p>\n<p>LinkedIn: <a href=\"https://www.linkedin.com/in/ammiel-yawson-098902124/\">Ammiel Yawson</a></p>"
-    },
-    "_id": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
-    "_raw": {
-      "sourceFilePath": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
-      "sourceFileName": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
-      "sourceFileDir": ".",
-      "contentType": "mdx",
-      "flattenedPath": "the-css-box-model-the-foundation-of-layouts-on-the-web"
-    },
-    "type": "Post",
-    "slug": "the-css-box-model-the-foundation-of-layouts-on-the-web",
     "reading_time": 2
   },
   {
@@ -81,30 +81,30 @@
     "reading_time": 2
   },
   {
-    "title": "3+ JavaScript String methods you’ll use often and where you’ll need them.",
+    "title": "The CSS Box model. The foundation of layouts on the web.",
     "author": "Ammiel Yawson",
-    "created_at": "2022-01-24T00:00:00.000Z",
-    "primary_tag": "JavaScript",
+    "created_at": "2022-02-15T00:00:00.000Z",
+    "primary_tag": "CSS",
     "featured": true,
-    "feature_image": "/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/featured.webp",
+    "feature_image": "/images/the-css-box-model-the-foundation-of-layouts-on-the-web/featured.webp",
     "tags": [
-      "JavaScript",
+      "CSS",
       "Web Development"
     ],
     "body": {
-      "raw": "",
-      "html": ""
+      "raw": "Depending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.\n\nWe’ll illustrate this model with a relatable situation.\n\nYour sister’s birthday is next Saturday. You plan on getting her the iPhone 13 you know she so wants. However, you want it to be a surprise. So after buying the phone, you take it out of its box and put it into a bigger one; you don’t want her to guess your gift right away.\n\nThere is one problem. The screen might break if you allow the phone to wobble about in the box; or if someone drops it. So you put some stuffing around the phone in the box to soften the blow if it falls.\n\nYou bring your gift to where all the others are. But you don’t want yours to blend in with the others. So you put some distance between yours and the others.\n\nNow back to CSS.\n\n![Box Model](/images/the-css-box-model-the-foundation-of-layouts-on-the-web/box-model.png)\n\nThe main idea of the Box Model is that every element on an HTML page is a box🎁. Where depending on how fragile the item is, you put a lot of stuffing (padding) around it or no stuffing at all. And depending on how much you want it to stand out, you put some distance between your gift and others around it.\n\nIn CSS,\n\n- The content of an element is the item inside the box.\n- The padding of an element is the stuffing around the item.\n- The border is the walls of the gift box.\n- The margin is the space between the gift box and other gifts boxes.\n\nThat’s it. That’s the CSS box model.\n\nLet me know your thoughts.\n\nTwitter: [@ammduncan](https://www.twitter.com/ammduncan)\n\nLinkedIn: [Ammiel Yawson](https://www.linkedin.com/in/ammiel-yawson-098902124/)",
+      "html": "<p>Depending on your level of experience in web development, you may or may not have heard about the Box Model. It is a fundamental concept in CSS that will shape how you use CSS to build layouts.</p>\n<p>We’ll illustrate this model with a relatable situation.</p>\n<p>Your sister’s birthday is next Saturday. You plan on getting her the iPhone 13 you know she so wants. However, you want it to be a surprise. So after buying the phone, you take it out of its box and put it into a bigger one; you don’t want her to guess your gift right away.</p>\n<p>There is one problem. The screen might break if you allow the phone to wobble about in the box; or if someone drops it. So you put some stuffing around the phone in the box to soften the blow if it falls.</p>\n<p>You bring your gift to where all the others are. But you don’t want yours to blend in with the others. So you put some distance between yours and the others.</p>\n<p>Now back to CSS.</p>\n<p><img src=\"/images/the-css-box-model-the-foundation-of-layouts-on-the-web/box-model.png\" alt=\"Box Model\"></p>\n<p>The main idea of the Box Model is that every element on an HTML page is a box🎁. Where depending on how fragile the item is, you put a lot of stuffing (padding) around it or no stuffing at all. And depending on how much you want it to stand out, you put some distance between your gift and others around it.</p>\n<p>In CSS,</p>\n<ul>\n<li>The content of an element is the item inside the box.</li>\n<li>The padding of an element is the stuffing around the item.</li>\n<li>The border is the walls of the gift box.</li>\n<li>The margin is the space between the gift box and other gifts boxes.</li>\n</ul>\n<p>That’s it. That’s the CSS box model.</p>\n<p>Let me know your thoughts.</p>\n<p>Twitter: <a href=\"https://www.twitter.com/ammduncan\">@ammduncan</a></p>\n<p>LinkedIn: <a href=\"https://www.linkedin.com/in/ammiel-yawson-098902124/\">Ammiel Yawson</a></p>"
     },
-    "_id": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+    "_id": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
     "_raw": {
-      "sourceFilePath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
-      "sourceFileName": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them.mdx",
+      "sourceFilePath": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
+      "sourceFileName": "the-css-box-model-the-foundation-of-layouts-on-the-web.mdx",
       "sourceFileDir": ".",
       "contentType": "mdx",
-      "flattenedPath": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them"
+      "flattenedPath": "the-css-box-model-the-foundation-of-layouts-on-the-web"
     },
     "type": "Post",
-    "slug": "3-javascript-string-methods-youll-use-often-and-where-youll-need-them",
-    "reading_time": 1
+    "slug": "the-css-box-model-the-foundation-of-layouts-on-the-web",
+    "reading_time": 2
   }
 ]

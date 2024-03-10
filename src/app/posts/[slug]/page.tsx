@@ -1,5 +1,6 @@
 import React from 'react';
 
+import * as cheerio from 'cheerio';
 import Image from 'next/image';
 import dayjs from 'dayjs';
 
@@ -15,12 +16,11 @@ type PageProps = {
 };
 
 function getDescription(htmlString: string) {
-  // Regular expression to extract text content
-  const textRegex = /<[^>]*?>(?<=^>|\s)(.*?)(?=\s|$|<\/)/g;
+  // Load the HTML string using cheerio
+  const $ = cheerio.load(htmlString);
 
-  // Extract text using the regular expression
-  const matches = htmlString.match(textRegex) || [];
-  return matches.join(' ').trim();
+  // Get the text content
+  return $('body').text().slice(0, 150) + '...';
 }
 
 export function generateMetadata({ params }: PageProps) {
@@ -31,7 +31,7 @@ export function generateMetadata({ params }: PageProps) {
     title: `${currentPost?.title} | Ammiel Yawson`,
     description: getDescription(currentPost?.body.html ?? ''),
     openGraph: {
-      images: [currentPost?.feature_image!],
+      images: [process.env.NEXT_PUBLIC_BASE_URL + currentPost?.feature_image!],
     },
   };
 }
