@@ -42,8 +42,9 @@ export default function Slug({ params }: PageProps) {
 
   return (
     <main>
-      <header className="text-balance bg-gradient-to-r from-purple-500 to-purple-400 text-white">
-        <div className="container top-40 mx-auto flex !max-w-[68ch] flex-col gap-4 py-16 pb-[30%]">
+      <header className="relative text-balance text-white">
+        <div className="absolute left-0 top-0 z-[-1] h-4/5 w-full bg-gradient-to-r from-purple-500 to-purple-400"></div>
+        <div className="container top-40 mx-auto flex !max-w-[68ch] flex-col gap-4 pb-5 pt-16">
           <Text variant="h1" family="serif" weight="normal" className="top-12">
             {currentPost?.title}
           </Text>
@@ -72,21 +73,23 @@ export default function Slug({ params }: PageProps) {
             <SocialShare />
             {/*  Social share::end  */}
           </div>
+          {/* Post Image */}
+          <div className="relative mt-4 w-full pt-[60%]">
+            <Text className="absolute -top-5 left-6 z-10 rounded-lg bg-white p-2 px-4 text-purple shadow">
+              {currentPost?.primary_tag}
+            </Text>
+
+            <Image
+              src={currentPost?.feature_image!}
+              alt={currentPost?.title!}
+              fill
+              className="object-cover"
+            />
+          </div>
+          {/* Post Image::end */}
         </div>
       </header>
-      <section className="container -mt-[29%] !max-w-[68ch] py-8">
-        <div className="relative mb-8 w-full pt-[60%]">
-          <Text className="absolute -top-5 left-6 z-10 rounded-lg bg-white p-2 px-4 text-purple shadow">
-            {currentPost?.primary_tag}
-          </Text>
-
-          <Image
-            src={currentPost?.feature_image!}
-            alt={currentPost?.title!}
-            fill
-            className="object-cover"
-          />
-        </div>
+      <section className="container !max-w-[68ch] pb-8">
         <PostBody body={currentPost?.body.html ?? ''} />
       </section>
     </main>
