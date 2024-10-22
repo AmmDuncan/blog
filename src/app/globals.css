@@ -2,18 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {}
-
-@media (prefers-color-scheme: dark) {
-  :root {}
+:root {
 }
 
-html {}
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
+html {
+}
 
 body {
   font-family: theme('fontFamily.sans');
-  color: theme('colors.grey.400');
-  background: #f9f9f9;
+  color: theme('colors.grey.500');
+  background: #f9f7fe;
 
   --h1-font-size: 44px;
   --h2-font-size: 32px;
@@ -24,7 +27,8 @@ body {
   --p-font-size: 18px;
 }
 
-@layer components {}
+@layer components {
+}
 
 @layer utilities {
   .text-balance {
@@ -54,6 +58,7 @@ main {
 .post-body h6 {
   font-family: theme('fontFamily.serif');
   line-height: 1;
+  color: theme('colors.grey.700');
 }
 
 .post-body h1 {
@@ -69,10 +74,15 @@ main {
   line-height: 1.6;
   color: theme('colors.grey.300');
   text-wrap: pretty;
+  font-weight: 350;
 }
 
 .post-body a {
-  color: theme('colors.blue.400')
+  color: theme('colors.blue.400');
+}
+
+.post-body img {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.05));
 }
 
 .post-body ul {
@@ -81,11 +91,11 @@ main {
   list-style: disc;
   padding-inline-start: 20px;
 }
-.post-body ol {}
+.post-body ol {
+}
 
 .post-body li {
   padding-inline-start: 4px;
-
 }
 
 *:not(pre) > code {
@@ -96,5 +106,5 @@ main {
   background: #282c34;
   /*color: #d19a66;*/
   color: #ffffffaa;
-  font-size: calc(var(--p-font-size) * 0.925)
+  font-size: calc(var(--p-font-size) * 0.925);
 }

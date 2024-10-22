@@ -9,3 +9,143 @@ tags:
 feature_image: '/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/featured.webp'
 featured: true
 ---
+
+As a web developer—frontend or backend—strings make up the most significant portion of the data you deal with commonly.
+
+Sometimes, you use the string values as they are. Other times, you need a modified version of the string. Hence, one of the things you do most is String Manipulation.
+
+From my own experience, as a frontend developer, there are several string methods that I use most often. I believe these methods would benefit anyone in the field.
+
+We’ll take a walk through the process of building a search feature on a website. And in the process, highlight these string methods and some situations that call for them.
+
+![Image of Burger Prince Menu](/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/burger-prince-menu.png)
+
+## 👑 Burger Prince
+
+Burger Prince is a fictional Burger Franchise. They contacted us to add a search feature to their website.
+
+Since this post’s main aim is string methods, we will not worry about the implementation details.
+
+Extracting just the names from the menu, we get something like this.
+
+```js
+const mainList = [
+  'Hamburger Gold',
+  'Hamburger Bronze',
+  'Beef Burger',
+  'Turkey Burgey',
+];
+```
+
+To avoid disrupting other features that rely on the menu list, we will not modify the list directly. However, we will make a new list of the items that match the keywords entered by the user.
+
+To do that, we’ll go through the list and check if the item contains the keyword(s) entered by the user. If it does, we add it to the new list. We use modern array methods to loop through the list; topic for another time.
+
+![Search bar with hamburger and space](/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/search-with-hamburger-and-space.png)
+
+## 🪣 includes()
+
+To check if an item contains the keyword entered by the user, we use the includes method available on all JavaScript String objects. So the code would look like this;
+
+const newList = mainList.filter((item) => {
+return item.includes(keyword)
+})
+
+Assuming a user enters the string “ hamburger “; how many items do you think will be in the new list?
+
+ZERO.
+
+If you’re wondering why it’s not two, I’ll tell you why. Notice the capital “H” in Hamburger Gold and Hamburger Bronze? The includes method is case sensitive: meaning h is not equal to H.
+
+So how solve this problem?
+
+## 🔤 toLowerCase() and toUpperCase()
+
+You can compare the all-lowercase version of the item in the main list to the all-lowercase version of the search keyword. The code would now look like this.
+
+const newList = mainList.filter((item) => {
+const itemInLowercase = item.toLowerCase();
+const keywordInLowercase = keyword.toLowerCase();
+return itemInLowercase.includes(keywordInLowercase);
+})
+
+How many items should the new list have if the search keyword remains unchanged?
+
+ZERO AGAIN.
+
+## ✂️ trim()
+
+Notice the spaces between the quotation marks and hamburger in the search value? The menu items contain “Hamburger” with no space before the letter H; Hence, none of the items in the main list match the keyword.
+
+![Search with spaces labelled](/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/search-with-spaces-labelled.png)
+
+The trim method in JavaScript removes white spaces from the beginning and end of a string if any exists.
+
+We can use the trim method to remove the white spaces from the start and end of the search value. The result would be “hamburger”: with no spaces surrounding it.
+
+```js
+const newList = mainList.filter((item) => {
+  const itemInLowercase = item.toLowerCase();
+  const keywordInLowercase = keyword.toLowerCase();
+  const trimmedKeyword = keywordInLowercase.trim();
+  return itemInLowercase.includes(trimmedKeyword);
+});
+```
+
+The keyword now matches two items in the main list: Hamburger Gold and Hamburger Bronze.
+
+That’s all for the methods we will use to build the search feature for 👑 Burger Prince.
+
+---
+
+Two other JavaScript string methods that will bring you massive value are the slice and replaceAll methods.
+
+## 🍰 slice(startIndex, [endIndex])
+
+Slice "extracts a section of a string and returns it as a new string, without modifying the original string." - MDN Docs.
+
+It takes two parameters: startIndex and endIndex (optional).
+
+It returns a string with characters starting from the startIndex to (but not including) the endIndex. When given only the startIndex, slice returns a string with characters from the startIndex to the end of the string.
+
+![Slice method use with monday](/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/slice-monday.png)
+
+For example, you receive a string: monday. And you would like to capitalize it before displaying it on your website. The code would like this.
+
+```js
+const word = 'monday';
+
+const firstLetter = word.slice(0, 1);
+const restOfWord = word.slice(1);
+const capitalFirst = firstLetter.toUpperCase();
+
+const capitalizedWord = capitalFirst + restOfWord;
+```
+
+## 🎭 replaceAll(pattern, replacement)
+
+The replaceAll method takes two parameters: pattern and replacement. It “returns a new string with all matches of a pattern replaced by a replacement" - MDN Docs.
+
+A situation where you will need to employ this method is;
+
+You scraped the price of the F150 Raptor from the Ford website and you need to calculate how much that would be in your local currency. The value you got back is “$65,375”.
+
+You can use the slice method to get the price without the currency: "65,375".
+
+You will run into a problem when converting this value to a number. There are various ways to convert a string to a number in JavaScript, and this is how they would all fail the task.
+
+![Amount to number](/images/3-javascript-string-methods-youll-use-often-and-where-youll-need-them/amount-to-number.png)
+
+The issue here is the comma in the string. To solve this issue, we can use the replaceAll method to find and replace all the occurrences of a comma in the value with an empty string.
+
+You end up with a clean string, ready to be converted; "65375". You can use any of the methods above to convert.
+
+The aim of is this post was to bring these methods to your attention. So if any of them seemed unclear, look them up in the MDN docs for a detailed usage guide.
+
+If you want to start your journey in web development, stay tuned for more posts. I write about the skills you need to succeed as a web developer.
+
+Let me know your thoughts.
+
+Twitter: [@ammduncan](https://www.twitter.com/ammduncan)
+
+LinkedIn: [Ammiel Yawson](https://www.linkedin.com/in/ammiel-yawson-098902124/)

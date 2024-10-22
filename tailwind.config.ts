@@ -42,6 +42,7 @@ const config: Config = {
       },
       boxShadow: {
         xl: '0 1.6rem 2.4rem rgba(0,0,0,.075),0 0 .2rem rgba(0,0,0,.03)',
+        lg: '0 3.2rem 5.6rem -2.4rem rgba(75,75,98,.2),0 0 .4rem rgba(209,209,217,.25)',
       },
     },
   },

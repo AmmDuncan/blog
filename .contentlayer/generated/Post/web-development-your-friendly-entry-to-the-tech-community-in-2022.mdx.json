@@ -1,0 +1,26 @@
+{
+  "title": "Web development: your friendly entry to the tech community in 2022.",
+  "author": "Ammiel Yawson",
+  "created_at": "2022-01-17T00:00:00.000Z",
+  "primary_tag": "Web Development",
+  "featured": true,
+  "feature_image": "/images/web-development-your-friendly-entry-to-the-tech-community-in-2022/featured.webp",
+  "tags": [
+    "Web Development"
+  ],
+  "body": {
+    "raw": "\nThe tech field encompasses more than just software development. And there’s more to software development than web development. But why is everyone trying to teach you how to get into web development?\n\nIf you’ve paid the slightest attention to online tech communities, you would have noticed the trend of people sharing resources on how to get into web development.\n\nOnce again, web development isn’t the only field in software development. However, there are compelling reasons why the community is head over heels for web development.\n\nBefore any other reason, it is just so easy for someone without a computer science background to be a successful web developer. By success, I mean gaining financial freedom, location freedom (remote working opportunities), and working without the bureaucratic clutter; to keep it short.\n\n![Web development](/images/web-development-your-friendly-entry-to-the-tech-community-in-2022/image-1.png)\n\n<figcaption>\n  Web development is a great entry point to the tech industry, offering\n  accessibility, high demand, financial freedom, remote work opportunities, and\n  a less bureaucratic work environment.\n</figcaption>\n",
+    "html": "<p>The tech field encompasses more than just software development. And there’s more to software development than web development. But why is everyone trying to teach you how to get into web development?</p>\n<p>If you’ve paid the slightest attention to online tech communities, you would have noticed the trend of people sharing resources on how to get into web development.</p>\n<p>Once again, web development isn’t the only field in software development. However, there are compelling reasons why the community is head over heels for web development.</p>\n<p>Before any other reason, it is just so easy for someone without a computer science background to be a successful web developer. By success, I mean gaining financial freedom, location freedom (remote working opportunities), and working without the bureaucratic clutter; to keep it short.</p>\n<p><img src=\"/images/web-development-your-friendly-entry-to-the-tech-community-in-2022/image-1.png\" alt=\"Web development\"></p>"
+  },
+  "_id": "web-development-your-friendly-entry-to-the-tech-community-in-2022.mdx",
+  "_raw": {
+    "sourceFilePath": "web-development-your-friendly-entry-to-the-tech-community-in-2022.mdx",
+    "sourceFileName": "web-development-your-friendly-entry-to-the-tech-community-in-2022.mdx",
+    "sourceFileDir": ".",
+    "contentType": "mdx",
+    "flattenedPath": "web-development-your-friendly-entry-to-the-tech-community-in-2022"
+  },
+  "type": "Post",
+  "slug": "web-development-your-friendly-entry-to-the-tech-community-in-2022",
+  "reading_time": 1
+}

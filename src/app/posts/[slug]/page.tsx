@@ -42,7 +42,7 @@ export default function Slug({ params }: PageProps) {
 
   return (
     <main>
-      <header className="relative text-balance text-white">
+      <header className="relative text-white">
         <div className="absolute left-0 top-0 z-[-1] h-4/5 w-full bg-gradient-to-r from-purple-500 to-purple-400"></div>
         <div className="container top-40 mx-auto flex !max-w-[68ch] flex-col gap-4 pb-5 pt-16">
           <Text variant="h1" family="serif" weight="normal" className="top-12">
@@ -73,9 +73,10 @@ export default function Slug({ params }: PageProps) {
             <SocialShare />
             {/*  Social share::end  */}
           </div>
+
           {/* Post Image */}
           <div className="relative mt-4 w-full pt-[60%]">
-            <Text className="absolute -top-5 left-6 z-10 rounded-lg bg-white p-2 px-4 text-purple shadow">
+            <Text className="absolute -top-5 left-6 z-10 rounded-lg bg-white p-1 px-4 text-sm text-purple shadow">
               {currentPost?.primary_tag}
             </Text>
 

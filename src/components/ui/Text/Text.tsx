@@ -82,7 +82,7 @@ export const Text = React.memo((props: Props) => {
     { [fontWeights[computedFontWeight]]: !!computedFontWeight },
     { [fontFamily[family]]: !!family },
     { ['tracking-tight']: variant.startsWith('h') && family === 'sans' },
-    { ['tracking-wide']: variant.startsWith('h') && family === 'sans' },
+    // { ['tracking-wide']: variant.startsWith('h') && family === 'sans' },
   ]);
 
   const evaluatedElement = asVariant ? variant : as;

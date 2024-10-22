@@ -4,5 +4,6 @@ import _3JavascriptStringMethodsYoullUseOftenAndWhereYoullNeedThemMdx from './_3
 import provideInjectHowToDrillPropsInVueWithoutActuallyPropDrillingMdx from './provide-inject-how-to-drill-props-in-vue-without-actually-prop-drilling.mdx.json' assert { type: 'json' }
 import recipeForAnEffectiveWebsiteMdx from './recipe-for-an-effective-website.mdx.json' assert { type: 'json' }
 import theCssBoxModelTheFoundationOfLayoutsOnTheWebMdx from './the-css-box-model-the-foundation-of-layouts-on-the-web.mdx.json' assert { type: 'json' }
+import webDevelopmentYourFriendlyEntryToTheTechCommunityIn_2022Mdx from './web-development-your-friendly-entry-to-the-tech-community-in-2022.mdx.json' assert { type: 'json' }
 
-export const allPosts = [_3JavascriptStringMethodsYoullUseOftenAndWhereYoullNeedThemMdx, provideInjectHowToDrillPropsInVueWithoutActuallyPropDrillingMdx, recipeForAnEffectiveWebsiteMdx, theCssBoxModelTheFoundationOfLayoutsOnTheWebMdx]
+export const allPosts = [_3JavascriptStringMethodsYoullUseOftenAndWhereYoullNeedThemMdx, provideInjectHowToDrillPropsInVueWithoutActuallyPropDrillingMdx, recipeForAnEffectiveWebsiteMdx, theCssBoxModelTheFoundationOfLayoutsOnTheWebMdx, webDevelopmentYourFriendlyEntryToTheTechCommunityIn_2022Mdx]
