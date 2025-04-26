@@ -8,7 +8,7 @@ interface BlogCategoriesProps {
 export const BlogCategories: React.FC<BlogCategoriesProps> = ({
   categories,
 }) => (
-  <div className="rounded-lg bg-grey-100/20 p-8 dark:bg-grey-200/5">
+  <div className="sticky top-24 rounded-lg bg-grey-100/20 p-8 dark:bg-grey-200/5">
     <h3 className="mb-4 border-b border-[var(--color-cta-br)] pb-3 text-2xl font-semibold">
       Categories
     </h3>

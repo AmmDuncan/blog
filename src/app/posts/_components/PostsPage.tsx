@@ -76,7 +76,7 @@ export default function PostsPageComponent({
         </div>
       </div>
 
-      <div className="rounded-lg bg-grey-100/20 p-8 dark:bg-grey-200/5">
+      <div className="sticky top-24 rounded-lg bg-grey-100/20 p-8 dark:bg-grey-200/5">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b  border-[var(--color-cta-br)] pb-3">
           <h3 className="text-2xl font-semibold leading-[1.2]">
             Other Categories
