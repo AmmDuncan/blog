@@ -14,5 +14,19 @@ export function getData(slug?: string) {
     ? allPosts.find((post) => post.slug === slug)
     : undefined;
 
-  return { all, featured, currentPost };
+  const categories = allPosts.reduce(
+    (acc, post) => {
+      const tags = post.tags || [];
+      tags.forEach((tag) => {
+        if (!acc[tag]) {
+          acc[tag] = 0;
+        }
+        acc[tag]++;
+      });
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
+  return { all, featured, currentPost, categories };
 }

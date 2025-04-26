@@ -1,21 +1,21 @@
-import { Header } from '@/components';
-import Image from 'next/image';
-import { Featured } from './_components/Featured';
-
 import React from 'react';
-import { RecentlyAdded } from './_components/RecentlyAdded';
+import { BlogHeader } from './_components/BlogHeader';
+import { BlogPostList } from './_components/BlogPostList';
+import { BlogCategories } from './_components/BlogCategories';
+import { getData } from '@/services/getData';
 
 export default function Home() {
+  const { all, categories } = getData();
+  const recentlyAdded = all.slice(0, 5);
+
   return (
-    <main className="">
-      <Header />
-      <Featured />
-      <div className="container flex flex-col gap-8 pb-10 md:flex-row-reverse">
-        <div className="w-4/12 md:max-w-[390px]">Categories</div>
-        <div className="border-r border-r-gray-200"></div>
-        <div className="md:flex-1">
-          <RecentlyAdded />
-        </div>
+    <main className="min-h-screen font-sans">
+      <BlogHeader />
+      <div className="container mx-auto grid grid-cols-1 gap-12 pb-20 md:grid-cols-3">
+        <BlogPostList posts={recentlyAdded} />
+        <aside className="flex flex-col gap-10">
+          <BlogCategories categories={categories} />
+        </aside>
       </div>
     </main>
   );

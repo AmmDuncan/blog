@@ -38,7 +38,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
-        serif: ['var(--font-dm-serif)', 'serif'],
+        serif: ['var(--font-crimson)', 'serif'],
       },
       boxShadow: {
         xl: '0 1.6rem 2.4rem rgba(0,0,0,.075),0 0 .2rem rgba(0,0,0,.03)',
@@ -47,5 +47,6 @@ const config: Config = {
     },
   },
   plugins: [],
+  darkMode: 'class',
 };
 export default config;

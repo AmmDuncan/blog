@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import { DM_Serif_Text, Inter } from 'next/font/google';
+import { DM_Serif_Text, Inter, Crimson_Text } from 'next/font/google';
 import './globals.css';
 
 import { Navbar } from '@/components';
+import { ThemeSwitch } from '@/components/common/ThemeSwitch';
 import clsx from 'clsx';
 import { Footer } from '@/components';
 
@@ -11,6 +12,12 @@ const dmSerif = DM_Serif_Text({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-dm-serif',
+});
+
+const crimson = Crimson_Text({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-crimson',
 });
 
 export const metadata: Metadata = {
@@ -27,9 +34,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={clsx(inter.className, dmSerif.variable, inter.variable)}
+      className={clsx(
+        inter.className,
+        dmSerif.variable,
+        inter.variable,
+        crimson.variable
+      )}
     >
       <body className="min-h-[120vh]">
+        <div className="fixed bottom-4 right-4 z-50">
+          <ThemeSwitch />
+        </div>
         <Navbar />
         {children}
         <Footer />
