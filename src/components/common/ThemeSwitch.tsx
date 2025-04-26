@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs';
 
 // Helper to get system theme
@@ -21,7 +21,7 @@ export const ThemeSwitch: React.FC = () => {
     return false;
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     localStorage.setItem('theme-night', String(night));
     if (night) {
       document.documentElement.classList.add('dark');

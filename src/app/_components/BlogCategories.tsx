@@ -16,7 +16,7 @@ export const BlogCategories: React.FC<BlogCategoriesProps> = ({
       {Object.entries(categories).map(([tag, count]) => (
         <li key={tag}>
           <Link
-            href="#"
+            href={`/posts/?category=${encodeURIComponent(tag)}`}
             className="flex  items-start justify-between text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]"
           >
             {tag}{' '}

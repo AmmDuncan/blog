@@ -46,7 +46,7 @@ export function Navbar() {
     <div className="sticky top-0 z-[100] flex h-16 items-center bg-[var(--color-bg)] px-8 lg:h-24 ">
       <Link href="/" className="flex items-center gap-2">
         <Logo />
-        <Text weight="semibold" className="text-lg md:text-xl">
+        <Text weight="medium" className="text-lg md:text-xl">
           Ammiel Yawson
         </Text>
       </Link>

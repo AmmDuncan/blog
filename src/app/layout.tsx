@@ -6,6 +6,7 @@ import { Navbar } from '@/components';
 import { ThemeSwitch } from '@/components/common/ThemeSwitch';
 import clsx from 'clsx';
 import { Footer } from '@/components';
+import { NuqsAdapter } from 'nuqs/adapters/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const dmSerif = DM_Serif_Text({
@@ -42,12 +43,14 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-[120vh]">
-        <div className="fixed bottom-4 right-4 z-50">
-          <ThemeSwitch />
-        </div>
-        <Navbar />
-        {children}
-        <Footer />
+        <NuqsAdapter>
+          <div className="fixed bottom-4 right-4 z-50">
+            <ThemeSwitch />
+          </div>
+          <Navbar />
+          {children}
+          <Footer />
+        </NuqsAdapter>
       </body>
     </html>
   );

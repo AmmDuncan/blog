@@ -5,7 +5,7 @@ import { BlogCategories } from './_components/BlogCategories';
 import { getData } from '@/services/getData';
 
 export default function Home() {
-  const { all, categories } = getData();
+  const { all, categoriesCountDict } = getData();
   const recentlyAdded = all.slice(0, 5);
 
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="container mx-auto grid grid-cols-1 gap-12 pb-20 md:grid-cols-3">
         <BlogPostList posts={recentlyAdded} />
         <aside className="flex flex-col gap-10">
-          <BlogCategories categories={categories} />
+          <BlogCategories categories={categoriesCountDict} />
         </aside>
       </div>
     </main>

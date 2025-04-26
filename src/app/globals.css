@@ -131,9 +131,12 @@ main {
 .post-body h4,
 .post-body h5,
 .post-body h6 {
-  font-family: theme('fontFamily.serif');
+  /* font-family: theme('fontFamily.serif'); */
   line-height: 1;
-  color: var(--color-gray-700);
+  color: var(--color-text);
+  margin-top: 1.75em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .post-body h1 {
@@ -147,17 +150,20 @@ main {
 .post-body:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-size: var(--p-font-size);
   line-height: 1.6;
-  color: var(--color-gray-300);
+  color: var(--color-text);
   text-wrap: pretty;
   font-weight: 350;
 }
 
 .post-body a {
-  color: var(--color-purple-500);
+  color: var(--color-primary);
 }
 
 .post-body img {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.05));
+}
+:root.dark .post-body img {
+  filter: brightness(0.85) drop-shadow(0 0 4px rgba(0, 0, 0, 0.05));
 }
 
 .post-body ul {
@@ -166,11 +172,13 @@ main {
   list-style: disc;
   padding-inline-start: 20px;
 }
-.post-body ol {
-}
 
 .post-body li {
   padding-inline-start: 4px;
+}
+
+.post-body > p {
+  opacity: 0.95;
 }
 
 *:not(pre) > code {
@@ -179,7 +187,27 @@ main {
   margin: 2px;
   border-radius: 4px;
   background: #282c34;
-  /*color: #d19a66;*/
   color: #ffffffaa;
   font-size: calc(var(--p-font-size) * 0.925);
+}
+
+.underlined {
+  --underline-width: 100%;
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 77%;
+    z-index: -1;
+    width: var(--underline-width);
+    max-width: 320px;
+    padding-top: 11%;
+    background-image: url('/assets/underline.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
 }

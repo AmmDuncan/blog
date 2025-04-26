@@ -1,5 +1,27 @@
-import { allPosts } from 'contentlayer/generated';
+import { allPosts, Post } from 'contentlayer/generated';
 import dayjs from 'dayjs';
+
+function extractUniqueCategories(posts: Post[]) {
+  return Array.from(new Set(posts.flatMap((post) => post.tags || [])));
+}
+
+function getCategoriesCount(posts: Post[], categories?: string[]) {
+  if (categories) {
+    return categories.reduce(
+      (acc, tag) => {
+        acc[tag] = posts.filter((post) => post.tags?.includes(tag)).length;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
+  }
+  return posts.reduce<Record<string, number>>((acc, post) => {
+    (post.tags || []).forEach((tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+    return acc;
+  }, {});
+}
 
 export function getData(slug?: string) {
   const all = allPosts.sort((a, b) => {
@@ -14,19 +36,25 @@ export function getData(slug?: string) {
     ? allPosts.find((post) => post.slug === slug)
     : undefined;
 
-  const categories = allPosts.reduce(
-    (acc, post) => {
-      const tags = post.tags || [];
-      tags.forEach((tag) => {
-        if (!acc[tag]) {
-          acc[tag] = 0;
-        }
-        acc[tag]++;
-      });
-      return acc;
-    },
-    {} as Record<string, number>
-  );
+  const categories = extractUniqueCategories(allPosts);
 
-  return { all, featured, currentPost, categories };
+  const categoriesCountDict = getCategoriesCount(allPosts, categories);
+
+  return { all, featured, currentPost, categories, categoriesCountDict };
+}
+
+export function getFilteredData({ tag }: { tag: string | null }) {
+  const filteredPosts = tag
+    ? allPosts.filter((post) => post.tags?.includes(tag))
+    : allPosts;
+
+  const categories = extractUniqueCategories(allPosts);
+  const otherCategories = categories.filter((c) => c !== tag);
+  const categoriesCountDict = getCategoriesCount(allPosts, otherCategories);
+
+  return {
+    filteredPosts,
+    otherCategories,
+    otherCategoriesCountDict: categoriesCountDict,
+  };
 }
