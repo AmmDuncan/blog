@@ -10,9 +10,9 @@ import { SocialShare } from '@/app/_components/SocialShare';
 import { PostBody } from '@/app/_components/PostBody';
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 function getDescription(htmlString: string) {
@@ -23,8 +23,8 @@ function getDescription(htmlString: string) {
   return $('body').text().slice(0, 150) + '...';
 }
 
-export function generateMetadata({ params }: PageProps) {
-  const { slug } = params;
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
   const { currentPost } = getData(slug);
 
   return {
@@ -36,8 +36,8 @@ export function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function Slug({ params }: PageProps) {
-  const { slug } = params;
+export default async function Slug({ params }: PageProps) {
+  const { slug } = await params;
   const { currentPost } = getData(slug);
 
   return (
