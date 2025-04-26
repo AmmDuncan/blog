@@ -32,7 +32,7 @@ export const BlogPostList: React.FC<BlogPostListProps> = ({ posts }) => (
               {dayjs(post.created_at).format('YYYY-MM-DD')}
             </span>
           </div>
-          <h2 className="mb-4 font-serif text-5xl leading-[1.1]">
+          <h2 className="mb-4 font-serif text-4xl leading-[1.1] md:text-5xl">
             <Link
               href={`/posts/${post.slug}`}
               className="text-[var(--btn-foreground)] transition-opacity hover:text-[var(--color-primary)]"
