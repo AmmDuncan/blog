@@ -63,11 +63,13 @@ So how solve this problem?
 
 You can compare the all-lowercase version of the item in the main list to the all-lowercase version of the search keyword. The code would now look like this.
 
+```js
 const newList = mainList.filter((item) => {
-const itemInLowercase = item.toLowerCase();
-const keywordInLowercase = keyword.toLowerCase();
-return itemInLowercase.includes(keywordInLowercase);
-})
+  const itemInLowercase = item.toLowerCase();
+  const keywordInLowercase = keyword.toLowerCase();
+  return itemInLowercase.includes(keywordInLowercase);
+});
+```
 
 How many items should the new list have if the search keyword remains unchanged?
 
