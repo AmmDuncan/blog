@@ -43,7 +43,7 @@ function Logo(props: React.SVGProps<SVGSVGElement>) {
 
 export function Navbar() {
   return (
-    <div className="sticky top-0 z-[100] flex h-16 items-center bg-[var(--color-bg)] px-8 lg:h-24 ">
+    <div className="sticky top-0 z-[100] flex h-20 items-center bg-[var(--color-bg)] px-8 lg:h-24 ">
       <Link href="/" className="flex items-center gap-2">
         <Logo />
         <Text weight="medium" className="text-lg md:text-xl">

@@ -132,7 +132,7 @@ main {
 .post-body h5,
 .post-body h6 {
   /* font-family: theme('fontFamily.serif'); */
-  line-height: 1;
+  line-height: 1.4;
   color: var(--color-text);
   margin-top: 1.75em;
   font-weight: 600;

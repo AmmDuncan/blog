@@ -6,6 +6,7 @@ import { BsArrowRight, BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { BlogPostList } from '@/app/_components/BlogPostList';
 import { Post } from 'contentlayer/generated';
 import { useState } from 'react';
+import { Underlined } from '@/components/Underlined';
 
 export default function PostsPageComponent({
   activeCategory,
@@ -25,14 +26,9 @@ export default function PostsPageComponent({
   return (
     <main className="container mx-auto grid grid-cols-1 content-start items-start gap-x-12 gap-y-6 pb-20 md:grid-cols-3">
       <header className="col-span-full pb-8 pt-20">
-        <h1 className="inline-flex items-center gap-3 font-serif text-5xl [text-wrap:balance] md:text-6xl">
+        <h1 className="inline-flex flex-wrap items-center gap-3 gap-y-10 font-serif text-5xl [text-wrap:balance] md:text-6xl">
           {activeCategory ? (
-            <span
-              className="underlined"
-              style={{ '--underline-width': '50%' } as React.CSSProperties}
-            >
-              {activeCategory} Posts
-            </span>
+            <Underlined>{`${activeCategory} Posts`}</Underlined>
           ) : (
             <span>All Posts</span>
           )}
