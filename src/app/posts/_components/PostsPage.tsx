@@ -25,7 +25,7 @@ export default function PostsPageComponent({
 
   return (
     <main className="container mx-auto grid grid-cols-1 content-start items-start gap-x-12 gap-y-6 pb-20 md:grid-cols-3">
-      <header className="col-span-full pb-8 pt-20">
+      <header className="col-span-full min-h-[216px] pb-8 pt-20">
         <h1 className="inline-flex flex-wrap items-center gap-3 gap-y-10 font-serif text-5xl [text-wrap:balance] md:text-6xl">
           {activeCategory ? (
             <Underlined>{`${activeCategory} Posts`}</Underlined>

@@ -7,7 +7,7 @@ import LinkedInIcon from '@/assets/svgs/linkedin.svg';
 const styles = {};
 export const Footer = () => {
   return (
-    <footer className="min-h-[280px] border-t-[16px] border-t-purple-300 bg-gradient-to-r from-purple-300 to-purple-400 py-16 text-white">
+    <footer className="min-h-[280px] border-t-[16px] border-t-purple-300 bg-purple-300/90 bg-gradient-to-r py-16 text-white">
       <div className="container grid grid-rows-[150px_auto] gap-8 md:grid-cols-[240px_1fr] md:grid-rows-1">
         <div className="flex items-center gap-3 border-b border-purple-100/60 md:border-b-0 md:border-r">
           <Link href="/" passHref={true}>

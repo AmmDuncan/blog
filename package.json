@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/react-icons": "^3.0.0",
+    "@uidotdev/usehooks": "^2.4.1",
     "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.0",
     "contentlayer": "^0.3.4",

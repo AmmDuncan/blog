@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   title: "Insights from a web developer's journey | Ammiel Yawson",
   description:
     'Welcome to my space. An open look into insights from my journey.',
+  openGraph: {
+    images: [process.env.NEXT_PUBLIC_BASE_URL + '/assets/og-image.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [process.env.NEXT_PUBLIC_BASE_URL + '/assets/og-image.png'],
+  },
 };
 
 export default function RootLayout({
