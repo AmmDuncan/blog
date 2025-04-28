@@ -69,7 +69,6 @@ export function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                target={link.external ? '_blank' : undefined}
                 className={cn('flex items-center gap-1 hover:underline', {
                   'font-semibold text-[var(--color-primary)] hover:!no-underline':
                     isActive,
