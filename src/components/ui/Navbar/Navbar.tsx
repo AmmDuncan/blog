@@ -54,7 +54,7 @@ export function Navbar() {
   ];
 
   return (
-    <div className="sticky top-0 z-[100] flex h-20 items-center justify-between bg-[var(--color-bg)] px-8 lg:h-24 ">
+    <div className="sticky top-0 z-[100] flex h-20 items-center justify-between bg-[var(--color-bg)] lg:h-24 ">
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
