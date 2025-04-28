@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import Logo from '@/assets/svgs/logo.svg';
 import TwitterIcon from '@/assets/svgs/twitter.svg';
 import LinkedInIcon from '@/assets/svgs/linkedin.svg';
+import { Logo } from '../Navbar';
 
 const styles = {};
 export const Footer = () => {
   return (
-    <footer className="min-h-[280px] border-t-[16px] border-t-purple-300 bg-purple-300/90 bg-gradient-to-r py-16 text-white">
+    <footer className="min-h-[280px] bg-grey-100/10 bg-gradient-to-r py-16 text-[var(--color-text)] dark:bg-grey-300/10">
       <div className="container grid grid-rows-[150px_auto] gap-8 md:grid-cols-[240px_1fr] md:grid-rows-1">
         <div className="flex items-center gap-3 border-b border-purple-100/60 md:border-b-0 md:border-r">
           <Link href="/" passHref={true}>
@@ -23,7 +23,7 @@ export const Footer = () => {
 
           <div className="flex items-center gap-2">
             Get in touch:
-            <div className="flex gap-2 text-white/70">
+            <div className="flex gap-2 text-grey-300 dark:text-grey-200">
               <a
                 href={`https://twitter.com/ammduncan`}
                 target="_blank"

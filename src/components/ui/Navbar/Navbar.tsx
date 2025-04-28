@@ -6,7 +6,7 @@ import { HiExternalLink } from 'react-icons/hi';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/libs';
 
-function Logo(props: React.SVGProps<SVGSVGElement>) {
+export function Logo(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={48}
