@@ -44,13 +44,19 @@ export function getData(slug?: string) {
 }
 
 export function getFilteredData({ tag }: { tag: string | null }) {
-  const filteredPosts = tag
-    ? allPosts.filter((post) => post.tags?.includes(tag))
-    : allPosts;
+  const all = allPosts.sort((a, b) => {
+    if (a.created_at > b.created_at) return -1;
+    if (a.created_at < b.created_at) return 1;
+    return 0;
+  });
 
-  const categories = extractUniqueCategories(allPosts);
+  const filteredPosts = tag
+    ? all.filter((post) => post.tags?.includes(tag))
+    : all;
+
+  const categories = extractUniqueCategories(all);
   const otherCategories = categories.filter((c) => c !== tag);
-  const categoriesCountDict = getCategoriesCount(allPosts, otherCategories);
+  const categoriesCountDict = getCategoriesCount(all, otherCategories);
 
   return {
     filteredPosts,
