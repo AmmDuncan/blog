@@ -55,32 +55,34 @@ export function Navbar() {
 
   return (
     <div className="sticky top-0 z-[100] flex h-20 items-center justify-between bg-[var(--color-bg)] px-8 lg:h-24 ">
-      <Link href="/" className="flex items-center gap-2">
-        <Logo />
-        <Text weight="medium" className="text-lg md:text-xl">
-          Ammiel Yawson
-        </Text>
-      </Link>
+      <div className="container flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <Logo />
+          <Text weight="medium" className="text-lg md:text-xl">
+            Ammiel Yawson
+          </Text>
+        </Link>
 
-      <ul className="flex gap-10">
-        {links.map((link) => {
-          const isActive = !link.external && pathname === link.href;
-          return (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={cn('flex items-center gap-1 hover:underline', {
-                  'font-semibold text-[var(--color-primary)] hover:!no-underline':
-                    isActive,
-                })}
-              >
-                {link.label}
-                {link.external && <HiExternalLink />}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+        <ul className="flex gap-10">
+          {links.map((link) => {
+            const isActive = !link.external && pathname === link.href;
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={cn('flex items-center gap-1 hover:underline', {
+                    'font-semibold text-[var(--color-primary)] hover:!no-underline':
+                      isActive,
+                  })}
+                >
+                  {link.label}
+                  {link.external && <HiExternalLink />}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
