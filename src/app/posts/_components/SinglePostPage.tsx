@@ -74,6 +74,13 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
       <section className="container !max-w-[68ch] pb-8">
         <PostBody body={htmlWithIds} />
       </section>
+
+      <div
+        data-chirpy-theme="system"
+        data-chirpy-comment="true"
+        id="chirpy-comment"
+        className="container !max-w-[68ch]"
+      ></div>
     </main>
   );
 }

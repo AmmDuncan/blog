@@ -7,6 +7,7 @@ import { ThemeSwitch } from '@/components/common/ThemeSwitch';
 import clsx from 'clsx';
 import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const dmSerif = DM_Serif_Text({
@@ -59,6 +60,12 @@ export default function RootLayout({
           {children}
           <Footer />
         </NuqsAdapter>
+
+        <Script
+          defer
+          src="https://chirpy.dev/bootstrapper.js"
+          data-chirpy-domain="ammielyawson.com"
+        />
       </body>
     </html>
   );
