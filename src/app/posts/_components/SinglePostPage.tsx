@@ -29,7 +29,13 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
       <header className="relative text-white">
         <div className="absolute left-0 top-0 z-[-1] h-4/5 w-full bg-purple-300 dark:bg-purple-300/80"></div>
         <div className="container top-40 mx-auto flex !max-w-[68ch] flex-col gap-4 pb-5 pt-16">
-          <Text variant="h1" family="serif" weight="normal" className="top-12">
+          <Text
+            variant="h1"
+            asVariant
+            family="serif"
+            weight="normal"
+            className="top-12"
+          >
             {currentPost?.title}
           </Text>
 
