@@ -9,6 +9,7 @@ import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
 import { getCookie } from 'cookies-next/client';
 import { ThemeProvider } from '@/context/theme';
+import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const dmSerif = DM_Serif_Text({
@@ -40,12 +41,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = getCookie('theme') as 'light' | 'dark';
+  const theme = (await cookies()).get('theme')?.value;
 
   return (
     <html
