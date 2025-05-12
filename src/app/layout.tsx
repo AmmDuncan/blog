@@ -9,6 +9,7 @@ import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
 import { getCookie } from 'cookies-next/client';
 import { ThemeProvider } from '@/context/theme';
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const dmSerif = DM_Serif_Text({
@@ -55,6 +56,13 @@ export default function RootLayout({
         theme === 'dark' ? 'dark' : ''
       )}
     >
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="zLFDDp--tT-JPAWvEmeuj09tnYMwXA-DneHE48flTuA"
+        />
+      </Head>
+
       <body className="min-h-[120vh]">
         <NuqsAdapter>
           <ThemeProvider>
