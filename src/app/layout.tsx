@@ -7,7 +7,8 @@ import { ThemeSwitch } from '@/components/common/ThemeSwitch';
 import clsx from 'clsx';
 import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
-import Script from 'next/script';
+import { getCookie } from 'cookies-next/client';
+import { ThemeProvider } from '@/context/theme';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const dmSerif = DM_Serif_Text({
@@ -41,6 +42,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = getCookie('theme') as 'light' | 'dark';
+
   return (
     <html
       lang="en"
@@ -48,24 +51,21 @@ export default function RootLayout({
         inter.className,
         dmSerif.variable,
         inter.variable,
-        crimson.variable
+        crimson.variable,
+        theme === 'dark' ? 'dark' : ''
       )}
     >
       <body className="min-h-[120vh]">
         <NuqsAdapter>
-          <div className="fixed bottom-4 right-4 z-50">
-            <ThemeSwitch />
-          </div>
-          <Navbar />
-          {children}
-          <Footer />
+          <ThemeProvider>
+            <div className="fixed bottom-4 right-4 z-50">
+              <ThemeSwitch />
+            </div>
+            <Navbar />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </NuqsAdapter>
-
-        <Script
-          defer
-          src="https://chirpy.dev/bootstrapper.js"
-          data-chirpy-domain="ammielyawson.com"
-        />
       </body>
     </html>
   );

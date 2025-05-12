@@ -1,7 +1,6 @@
 'use client';
 
 import { Post } from 'contentlayer/generated';
-import * as cheerio from 'cheerio';
 import { useMemo } from 'react';
 import { Text } from '@/components';
 import { PostBody } from '@/app/_components/PostBody';
@@ -10,11 +9,16 @@ import { SocialShare } from '@/app/_components/SocialShare';
 import Image from 'next/image';
 import { addIdsToHeadings } from './TableOfContents';
 
+import { DiscussionEmbed } from 'disqus-react';
+import { useTheme } from '@/context/theme';
+
 export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
   const htmlWithIds = useMemo(
     () => addIdsToHeadings(currentPost?.body.html ?? ''),
     [currentPost?.body.html]
   );
+
+  const { theme } = useTheme();
 
   // const tableOfContents = useMemo(
   //   () => extractTableOfContents(htmlWithIds),
@@ -75,12 +79,17 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
         <PostBody body={htmlWithIds} />
       </section>
 
-      <div
-        data-chirpy-theme="system"
-        data-chirpy-comment="true"
-        id="chirpy-comment"
-        className="container !max-w-[68ch]"
-      ></div>
+      <section className="container !max-w-[68ch] pb-8">
+        <DiscussionEmbed
+          key={theme}
+          shortname="ammiels-blog"
+          config={{
+            url: `https://blog.ammielyawson.com/posts/${currentPost?.slug}`,
+            identifier: currentPost?.slug,
+            title: currentPost?.title,
+          }}
+        />
+      </section>
     </main>
   );
 }

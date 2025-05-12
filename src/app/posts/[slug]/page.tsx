@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
 
 import * as cheerio from 'cheerio';
-import Image from 'next/image';
-import dayjs from 'dayjs';
 
 import { getData } from '@/services/getData';
 import { SinglePostComponent } from '../_components/SinglePostPage';
