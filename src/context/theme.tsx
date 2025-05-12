@@ -10,8 +10,14 @@ export const ThemeContext = createContext<{
   toggleMode: () => {},
 });
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const { theme, toggleMode } = useThemeState();
+export const ThemeProvider = ({
+  children,
+  initialTheme,
+}: {
+  children: React.ReactNode;
+  initialTheme: Theme;
+}) => {
+  const { theme, toggleMode } = useThemeState(initialTheme);
   return (
     <ThemeContext.Provider value={{ theme, toggleMode }}>
       {children}
@@ -21,8 +27,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 export const useTheme = () => useContext(ThemeContext);
 
 export type Theme = 'light' | 'dark';
-export function useThemeState() {
-  const [theme, setTheme] = useState<Theme>(() => getCookie('theme') as Theme);
+export function useThemeState(initialTheme: Theme) {
+  const [theme, setTheme] = useState<Theme>(() => initialTheme);
 
   const toggleMode = (mode: Theme) => {
     setTheme(mode);

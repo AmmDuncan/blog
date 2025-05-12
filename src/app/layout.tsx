@@ -7,7 +7,6 @@ import { ThemeSwitch } from '@/components/common/ThemeSwitch';
 import clsx from 'clsx';
 import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
-import { getCookie } from 'cookies-next/client';
 import { ThemeProvider } from '@/context/theme';
 import { cookies } from 'next/headers';
 
@@ -61,7 +60,7 @@ export default async function RootLayout({
     >
       <body className="min-h-[120vh]">
         <NuqsAdapter>
-          <ThemeProvider>
+          <ThemeProvider initialTheme={theme === 'dark' ? 'dark' : 'light'}>
             <div className="fixed bottom-4 right-4 z-50">
               <ThemeSwitch />
             </div>
