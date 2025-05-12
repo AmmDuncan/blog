@@ -58,7 +58,10 @@ export function Navbar() {
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <Text weight="medium" className="text-lg md:text-xl">
+          <Text
+            weight="medium"
+            className="hidden text-lg sm:inline-block md:text-xl"
+          >
             Ammiel Yawson
           </Text>
         </Link>
