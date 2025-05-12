@@ -9,7 +9,6 @@ import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
 import { getCookie } from 'cookies-next/client';
 import { ThemeProvider } from '@/context/theme';
-import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const dmSerif = DM_Serif_Text({
@@ -36,6 +35,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [process.env.NEXT_PUBLIC_BASE_URL + '/assets/og-image.png'],
   },
+  verification: {
+    google: 'zLFDDp--tT-JPAWvEmeuj09tnYMwXA-DneHE48flTuA',
+  },
 };
 
 export default function RootLayout({
@@ -56,13 +58,6 @@ export default function RootLayout({
         theme === 'dark' ? 'dark' : ''
       )}
     >
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="zLFDDp--tT-JPAWvEmeuj09tnYMwXA-DneHE48flTuA"
-        />
-      </Head>
-
       <body className="min-h-[120vh]">
         <NuqsAdapter>
           <ThemeProvider>
