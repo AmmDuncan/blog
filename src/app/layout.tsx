@@ -7,7 +7,7 @@ import { ThemeSwitch } from '@/components/common/ThemeSwitch';
 import clsx from 'clsx';
 import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
-import { ThemeProvider } from '@/context/theme';
+import { Theme, ThemeProvider } from '@/context/theme';
 import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -45,7 +45,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = (await cookies()).get('theme')?.value;
+  const theme = (await cookies()).get('theme')?.value as Theme;
 
   return (
     <html
@@ -60,7 +60,7 @@ export default async function RootLayout({
     >
       <body className="min-h-[120vh]">
         <NuqsAdapter>
-          <ThemeProvider initialTheme={theme === 'dark' ? 'dark' : 'light'}>
+          <ThemeProvider initialTheme={theme}>
             <div className="fixed bottom-4 right-4 z-50">
               <ThemeSwitch />
             </div>
