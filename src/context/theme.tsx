@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useLayoutEffect, useState } from 'react';
 import { getCookie, setCookie } from 'cookies-next/client';
 
 export const ThemeContext = createContext<{
@@ -15,7 +15,7 @@ export const ThemeProvider = ({
   initialTheme,
 }: {
   children: React.ReactNode;
-  initialTheme: Theme;
+  initialTheme?: Theme;
 }) => {
   const { theme, toggleMode } = useThemeState(initialTheme);
   return (
@@ -27,8 +27,29 @@ export const ThemeProvider = ({
 export const useTheme = () => useContext(ThemeContext);
 
 export type Theme = 'light' | 'dark';
-export function useThemeState(initialTheme: Theme) {
-  const [theme, setTheme] = useState<Theme>(() => initialTheme);
+export function useThemeState(initialTheme?: Theme) {
+  const [theme, setTheme] = useState<Theme | undefined>(() => {
+    return initialTheme;
+  });
+
+  // set initial them
+  useLayoutEffect(() => {
+    if (theme) return;
+    const systemTheme =
+      typeof window !== 'undefined'
+        ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+        : 'light';
+
+    if (systemTheme === 'dark' && theme !== 'dark') {
+      document.documentElement.classList.add('dark');
+      toggleMode('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      toggleMode('light');
+    }
+  }, [theme]);
 
   const toggleMode = (mode: Theme) => {
     setTheme(mode);
