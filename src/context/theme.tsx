@@ -1,65 +1,66 @@
 'use client';
-import { createContext, useContext, useLayoutEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { getCookie, setCookie } from 'cookies-next/client';
 
-export const ThemeContext = createContext<{
-  theme: 'light' | 'dark';
-  toggleMode: (mode: 'light' | 'dark') => void;
-}>({
-  theme: 'light',
-  toggleMode: () => {},
-});
+export type Theme = 'light' | 'dark';
 
-export const ThemeProvider = ({
-  children,
-  initialTheme,
-}: {
-  children: React.ReactNode;
-  initialTheme?: Theme;
-}) => {
-  const { theme, toggleMode } = useThemeState(initialTheme);
+type ThemeContextType = {
+  theme: Theme;
+  toggleTheme: () => void;
+  setTheme: (mode: Theme) => void;
+};
+
+const defaultContext: ThemeContextType = {
+  theme: 'light',
+  toggleTheme: () => {},
+  setTheme: () => {},
+};
+
+export const ThemeContext = createContext<ThemeContextType>(defaultContext);
+
+export const useTheme = () => useContext(ThemeContext);
+
+const getSystemTheme = (): Theme => {
+  if (typeof window === 'undefined') return 'light';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+};
+
+const applyTheme = (theme: Theme) => {
+  if (typeof document === 'undefined') return;
+
+  const root = document.documentElement;
+  root.classList.remove('light', 'dark');
+  root.classList.add(theme);
+};
+
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setThemeState] = useState<Theme>(() => {
+    const cookieTheme = getCookie('theme') as Theme | undefined;
+    if (cookieTheme && (cookieTheme === 'light' || cookieTheme === 'dark')) {
+      return cookieTheme;
+    }
+    return getSystemTheme();
+  });
+
+  // Apply theme when it changes
+  useEffect(() => {
+    applyTheme(theme);
+    setCookie('theme', theme, { maxAge: 60 * 60 * 24 * 365 }); // 1 year expiry
+  }, [theme]);
+
+  const setTheme = (mode: Theme) => {
+    setThemeState(mode);
+  };
+
+  const toggleTheme = () => {
+    setThemeState((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleMode }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
-export const useTheme = () => useContext(ThemeContext);
-
-export type Theme = 'light' | 'dark';
-export function useThemeState(initialTheme?: Theme) {
-  const [theme, setTheme] = useState<Theme | undefined>(() => {
-    return initialTheme;
-  });
-
-  // set initial them
-  useLayoutEffect(() => {
-    if (theme) return;
-    const systemTheme =
-      typeof window !== 'undefined'
-        ? window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light'
-        : 'light';
-
-    if (systemTheme === 'dark' && theme !== 'dark') {
-      document.documentElement.classList.add('dark');
-      toggleMode('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      toggleMode('light');
-    }
-  }, [theme]);
-
-  const toggleMode = (mode: Theme) => {
-    setTheme(mode);
-    setCookie('theme', mode);
-    if (mode === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
-
-  return { theme, toggleMode };
-}

@@ -60,7 +60,7 @@ export default async function RootLayout({
     >
       <body className="min-h-[120vh]">
         <NuqsAdapter>
-          <ThemeProvider initialTheme={theme}>
+          <ThemeProvider>
             <div className="fixed bottom-4 right-4 z-50">
               <ThemeSwitch />
             </div>
