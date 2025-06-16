@@ -103,7 +103,7 @@ body:after {
   background-image: url('/assets/noise 1.png');
   background-size: 40px;
   background-repeat: repeat;
-  opacity: 0.1;
+  opacity: 0.075;
   pointer-events: none;
 }
 
@@ -152,6 +152,14 @@ main {
   font-size: var(--h2-font-size);
 }
 
+.post-body h3 {
+  font-size: var(--h3-font-size);
+}
+
+.post-body h4 {
+  font-size: var(--h4-font-size);
+}
+
 .post-body:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-size: var(--p-font-size);
   line-height: 1.6;
@@ -184,6 +192,10 @@ main {
 
 .post-body > p {
   opacity: 0.95;
+}
+
+.post-body .hljs {
+  font-size: 0.9em;
 }
 
 *:not(pre) > code {

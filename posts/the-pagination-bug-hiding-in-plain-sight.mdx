@@ -1,0 +1,129 @@
+---
+title: 'The Pagination Bug That’s Hiding in Plain Sight'
+created_at: '2025-06-17 9:00'
+author: 'Ammiel Yawson'
+primary_tag: 'Web Development'
+tags:
+  - Web Development
+  - React
+  - Vue
+feature_image: '/images/the-pagination-bug-hiding-in-plain-sight/featured.webp'
+featured: true
+---
+
+As a front-end developer, pagination is a common feature you'll work on. It usually involves a list of data, some filters, and finally, the pagination control.
+
+But there's a simple, common gotcha that you might be hiding in your application: not resetting the page back to 1 when any filter changes.
+
+### The problem:
+
+Imagine you're on page 4 of a user list page. You've still not found the user you're looking for, but you do know their first name: Fred.
+
+You type in "Fred", but then you get no results found. However, you're sure you saw Fred in the user list just yesterday.
+
+As a developer yourself, you decide to investigate this issue. You notice the query sent to the backend looks like this:
+
+```tsx
+{
+  "keyword": "Fred",
+  "page": 4
+}
+```
+
+Now you wonder, what about page 1? Right. You would have to manually change the page number to 1 to determine if there's actually no user called "Fred".
+
+With your frontend knowledge, you were able to catch this. You checked the network when you didn't get the results you were expecting.
+
+Will your non-dev user have the urge to check the network? I'm guessing not. That means you end up misleading your users.
+
+To fix this, always reset the page query to 1 whenever other queries are changed.
+
+Here are implementations in both React and Vue that I have used in the past to avoid this bug:
+
+### React
+
+````tsx
+import { useCallback, useReducer } from 'react';
+
+type QueryObject = Record<string, string | number>;
+
+function spreadReducer<
+  TState extends QueryObject,
+  TAction extends Partial<TState>,
+>(state: TState, action: TAction) {
+  return {
+    ...state,
+    ...action,
+  };
+}
+
+/**
+ * Hook to manage a query object. Automatically reset to page `1` when other
+ * query keys are changed
+ *
+ * @param initialQueryState - initial state of your query
+ * @returns an object containing the query object and the function to update the object
+ *
+ * @example
+ * ```
+ * function SomePageComponent() {
+ *   const { query, updateQuery } = usePageResetQuery({ keyword: '', page: 1, pageSize: 10 })
+ *   const handleSearchChange = (searchValue) => updateQuery({ keyword: searchValue })
+ *   return (
+ *     <div>
+ *       <input type="search" onChange={(e) => handleSearchChange(e.target.value)} />
+ *       {/* ... *\/}
+ *     </div>
+ *   )
+ * }
+ * ```
+ */
+export function usePageResetQuery<T extends QueryObject>(initialQueryState: T) {
+  const [query, updateQuery] = useReducer(
+    spreadReducer,
+    null,
+    () => initialQueryState
+  );
+
+  const modifiedUpdateQuery: typeof updateQuery = useCallback((action) => {
+    if ('page' in action) {
+      updateQuery(action);
+    } else {
+      updateQuery({
+        ...action,
+        page: 1,
+      });
+    }
+  }, []);
+
+  return {
+    query,
+    updateQuery: modifiedUpdateQuery,
+  };
+}
+````
+
+### Vue
+
+```tsx
+import { reactive, computed } from 'vue';
+
+type QueryObject = Record<string, string | number>;
+
+export function usePageResetQuery<T extends QueryObject>(initialQueryState: T) {
+  const query = reactive({ ...initialQueryState });
+
+  const updateQuery = (updates: Partial<T>) => {
+    if ('page' in updates) {
+      Object.assign(query, updates);
+    } else {
+      Object.assign(query, { ...updates, page: 1 });
+    }
+  };
+
+  return {
+    query: computed(() => query),
+    updateQuery,
+  };
+}
+```

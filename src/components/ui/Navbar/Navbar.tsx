@@ -62,7 +62,10 @@ export function Navbar() {
             weight="medium"
             className="hidden text-lg sm:inline-block md:text-xl"
           >
-            Ammiel Yawson
+            Ammiel{' '}
+            <span className="italic text-grey-300/80 [font-family:var(--font-pacifico)] dark:text-grey-200/80">
+              Writes
+            </span>
           </Text>
         </Link>
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DM_Serif_Text, Inter, Crimson_Text } from 'next/font/google';
+import { DM_Serif_Text, Inter, Crimson_Text, Pacifico } from 'next/font/google';
 import './globals.css';
 
 import { Navbar } from '@/components';
@@ -11,16 +11,22 @@ import { Theme, ThemeProvider } from '@/context/theme';
 import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const dmSerif = DM_Serif_Text({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-dm-serif',
-});
+// const dmSerif = DM_Serif_Text({
+//   subsets: ['latin'],
+//   weight: ['400'],
+//   variable: '--font-dm-serif',
+// });
 
 const crimson = Crimson_Text({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-crimson',
+});
+
+const pacifico = Pacifico({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-pacifico',
 });
 
 export const metadata: Metadata = {
@@ -52,9 +58,9 @@ export default async function RootLayout({
       lang="en"
       className={clsx(
         inter.className,
-        dmSerif.variable,
         inter.variable,
         crimson.variable,
+        pacifico.variable,
         theme === 'dark' ? 'dark' : ''
       )}
     >

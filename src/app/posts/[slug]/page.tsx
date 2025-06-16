@@ -27,7 +27,9 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${currentPost?.title} | Ammiel Yawson`,
     description: getDescription(currentPost?.body.html ?? ''),
     openGraph: {
-      images: [process.env.NEXT_PUBLIC_BASE_URL + currentPost?.feature_image!],
+      images: [
+        process.env.NEXT_PUBLIC_BASE_URL ?? '' + currentPost?.feature_image!,
+      ],
     },
   };
 }
