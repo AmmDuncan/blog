@@ -69,7 +69,7 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
             </Text>
 
             <Image
-              src={featureImage}
+              src={featureImage!}
               alt={currentPost?.title!}
               fill
               className="object-cover"

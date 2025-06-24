@@ -33,7 +33,7 @@ export const BlogPostItem: React.FC<BlogPostItemProps> = ({ post }) => {
     <article className="grid grid-flow-row grid-cols-[100%] gap-6 border-b border-[var(--color-cta-br)] pb-12 lg:grid-cols-[250px_3fr] lg:grid-rows-1">
       <div className="relative h-full min-h-[200px] overflow-hidden rounded-xl border-4 border-grey-100/50 dark:border-grey-100/30 sm:min-h-[250px]">
         <Image
-          src={featureImage}
+          src={featureImage!}
           alt={post.title}
           fill
           className="h-auto w-full rounded-md object-cover transition-transform duration-300 hover:scale-105"
