@@ -1,0 +1,81 @@
+---
+title: 'Stop Using useEffect for Everything (Try Lazy Effects Instead)'
+created_at: '2025-06-24 9:00'
+author: 'Ammiel Yawson'
+primary_tag: 'React'
+tags:
+  - React
+  - Vue
+feature_image: '/images/stop-using-useeffect-for-everything-try-lazy-effects-instead/featured.webp'
+feature_dark_mode_image: '/images/stop-using-useeffect-for-everything-try-lazy-effects-instead/featured-dark.webp'
+
+featured: true
+---
+
+The best code tells a clear story: user acts → handler responds.
+
+useEffect can break this story by separating effects from their actions, removing the direct link between user interactions and their responses. While it's the most common way we're taught to handle side effects in React, not all effects benefit from automatic execution.
+
+When the useEffect hook is overused, it can lead to cognitive load when looking to link effects to their causing actions.
+
+As a developer, a huge part of your work is reading code to understand and either extend functionality or fix bugs. Hence, you always want to lean on decisions that lead to clearer code.
+
+In the case of effects, lazy effects (sometimes known event-driven effects) are how you make sure you keep a direct link between your actions and their effects.
+
+<aside>
+💡
+
+Lazy effects are side effects called in response to user events/actions. They're "lazy" because they wait until manually called, and "event-driven" because they respond to user interactions.
+
+</aside>
+
+## Let’s look at examples:
+
+Search example
+
+```tsx
+// ❌ Reactive useEffect
+useEffect(() => {
+  if (searchTerm.length > 2) {
+    searchUsers(searchTerm);
+  }
+}, [searchTerm]);
+
+// ✅ Lazy event-driven
+const handleSearch = (term) => {
+  setSearchTerm(term);
+  if (term.length > 2) {
+    searchUsers(term);
+  }
+};
+```
+
+_The `searchUsers` function is clearly called inside `handleSearch`,
+establishing a direct relation between when search handler
+and the search users effect._
+
+---
+
+Modal example
+
+```tsx
+// ❌ Reactive
+useEffect(() => {
+  if (isModalOpen) {
+    trackModalView('user-profile');
+  }
+}, [isModalOpen]);
+
+// ✅ Lazy
+const openModal = () => {
+  setIsModalOpen(true);
+  trackModalView('user-profile');
+};
+```
+
+_Same as in the search example, There's a direct link between `openModal` handler and `trackModalView` effect._
+
+## How do you decide when to use lazy effects over useEffect?
+
+The simple question to ask is: does it occur in response to a user action? If yes, then you mostly want to go with event driven effects.
+If not, then useEffect is probably the right choice for reactive updates like data syncing or cleanup operations.

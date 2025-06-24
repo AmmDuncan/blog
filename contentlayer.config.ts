@@ -10,6 +10,7 @@ export const Post = defineDocumentType(() => ({
     primary_tag: { type: 'string', required: true },
     featured: { type: 'boolean' },
     feature_image: { type: 'string', required: true },
+    feature_dark_mode_image: { type: 'string', required: false },
     tags: { type: 'list', of: { type: 'string' }, required: true },
   },
   computedFields: {

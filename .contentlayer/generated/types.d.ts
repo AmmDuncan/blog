@@ -19,6 +19,7 @@ export type Post = {
   primary_tag: string
   featured?: boolean | undefined
   feature_image: string
+  feature_dark_mode_image?: string | undefined
   tags: string[]
   /** Markdown file body */
   body: Markdown

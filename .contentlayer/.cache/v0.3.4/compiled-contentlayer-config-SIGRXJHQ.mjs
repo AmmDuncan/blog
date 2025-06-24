@@ -10,6 +10,7 @@ var Post = defineDocumentType(() => ({
     primary_tag: { type: "string", required: true },
     featured: { type: "boolean" },
     feature_image: { type: "string", required: true },
+    feature_dark_mode_image: { type: "string", required: false },
     tags: { type: "list", of: { type: "string" }, required: true }
   },
   computedFields: {
@@ -35,4 +36,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-S5OPI5KS.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-SIGRXJHQ.mjs.map

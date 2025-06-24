@@ -11,6 +11,7 @@ import { addIdsToHeadings } from './TableOfContents';
 
 import { DiscussionEmbed } from 'disqus-react';
 import { useTheme } from '@/context/theme';
+import { usePostImage } from '@/hooks/usePostImage';
 
 export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
   const htmlWithIds = useMemo(
@@ -19,11 +20,8 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
   );
 
   const { theme } = useTheme();
+  const { featureImage } = usePostImage(currentPost);
 
-  // const tableOfContents = useMemo(
-  //   () => extractTableOfContents(htmlWithIds),
-  //   [htmlWithIds]
-  // );
   return (
     <main>
       <header className="relative text-white">
@@ -71,7 +69,7 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
             </Text>
 
             <Image
-              src={currentPost?.feature_image!}
+              src={featureImage}
               alt={currentPost?.title!}
               fill
               className="object-cover"
