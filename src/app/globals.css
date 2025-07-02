@@ -198,6 +198,19 @@ main {
   font-size: 0.9em;
 }
 
+.post-body ol {
+  list-style: decimal;
+  padding-inline-start: 20px;
+}
+
+.post-body ol li {
+  padding-block-end: 12px;
+}
+
+.post-body li img {
+  margin-block: 20px;
+}
+
 *:not(pre) > code {
   display: inline-block;
   padding: 2px 8px;
