@@ -37,6 +37,7 @@ export const BlogPostItem: React.FC<BlogPostItemProps> = ({ post }) => {
           alt={post.title}
           fill
           className="h-auto w-full rounded-md object-cover transition-transform duration-300 hover:scale-105"
+          style={{ objectPosition: post.feature_image_position ?? 'center' }}
         />
       </div>
       <div className="flex flex-col">
@@ -57,7 +58,7 @@ export const BlogPostItem: React.FC<BlogPostItemProps> = ({ post }) => {
           </Link>
         </h2>
         <p className="mb-4 text-gray-500">
-          {getPostDescription(post.body.html)}
+          {getPostDescription(post.body.raw)}
         </p>
         <Link
           href={`/posts/${post.slug}`}

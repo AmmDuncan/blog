@@ -20,9 +20,11 @@ export type Post = {
   featured?: boolean | undefined
   feature_image: string
   feature_dark_mode_image?: string | undefined
+  feature_image_position?: string | undefined
+  image_attribution?: string | undefined
   tags: string[]
-  /** Markdown file body */
-  body: Markdown
+  /** MDX file body */
+  body: MDX
   slug: string
   reading_time: number
 }  

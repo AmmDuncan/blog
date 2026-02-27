@@ -3,6 +3,7 @@ import { defineDocumentType, makeSource } from "@contentlayer/source-files";
 var Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `**/*.{md,mdx}`,
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     author: { type: "string", required: true },
@@ -11,6 +12,8 @@ var Post = defineDocumentType(() => ({
     featured: { type: "boolean" },
     feature_image: { type: "string", required: true },
     feature_dark_mode_image: { type: "string", required: false },
+    feature_image_position: { type: "string", required: false },
+    image_attribution: { type: "string", required: false },
     tags: { type: "list", of: { type: "string" }, required: true }
   },
   computedFields: {
@@ -18,12 +21,12 @@ var Post = defineDocumentType(() => ({
     slug: { type: "string", resolve: (post) => post._raw.flattenedPath },
     reading_time: {
       type: "number",
-      resolve: (post) => calculateReadingTimeMarkdown(post.body.html).estimatedTime
+      resolve: (post) => calculateReadingTimeMarkdown(post.body.raw).estimatedTime
     }
   }
 }));
 function calculateReadingTimeMarkdown(markdownText, wpm = 225) {
-  const text = markdownText.trim().replace(/<[^>]+>/g, " ").split(/\s+/);
+  const text = markdownText.trim().replace(/```[\s\S]*?```/g, " ").replace(/`[^`]*`/g, " ").replace(/!\[.*?\]\(.*?\)/g, " ").replace(/\[([^\]]*)\]\(.*?\)/g, "$1").replace(/#{1,6}\s/g, " ").replace(/[*_~>{}\[\]]/g, " ").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean);
   const wordCount = text.length;
   const estimatedTime = Math.ceil(wordCount / wpm);
   return { wordCount, estimatedTime };
@@ -36,4 +39,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-SIGRXJHQ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-S6YS2HS5.mjs.map

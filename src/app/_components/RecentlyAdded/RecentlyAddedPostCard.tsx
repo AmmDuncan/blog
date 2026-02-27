@@ -16,6 +16,7 @@ export function RecentlyAddedPostCard({ post }: { post: Post }) {
           alt={post.title}
           fill
           className="object-cover"
+          style={{ objectPosition: post.feature_image_position ?? 'center' }}
         />
       </div>
       <div className="flex flex-col gap-2 md:py-3 md:pl-2 lg:pr-5">
@@ -35,14 +36,28 @@ export function RecentlyAddedPostCard({ post }: { post: Post }) {
         </Text>
 
         <Text variant="p" className="line-clamp-3">
-          {getFirstParagraph(post.body.html)}
+          {getFirstParagraph(post.body.raw)}
         </Text>
       </div>
     </Link>
   );
 }
 
-function getFirstParagraph(body: string) {
-  const match = body.match(/<p>(.*?)<\/p>/);
-  return match ? match[1].replace(/<[^>]*>/g, '') : '';
+function getFirstParagraph(raw: string) {
+  const lines = raw.split('\n').filter((line) => {
+    const trimmed = line.trim();
+    return (
+      trimmed &&
+      !trimmed.startsWith('#') &&
+      !trimmed.startsWith('```') &&
+      !trimmed.startsWith('![') &&
+      !trimmed.startsWith('---') &&
+      !trimmed.startsWith('>')
+    );
+  });
+  const first = lines[0] ?? '';
+  return first
+    .replace(/\[([^\]]*)\]\(.*?\)/g, '$1')
+    .replace(/[*_~`]/g, '')
+    .replace(/<[^>]+>/g, '');
 }

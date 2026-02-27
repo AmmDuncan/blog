@@ -1,9 +1,18 @@
 import type { Metadata } from 'next';
-import { DM_Serif_Text, Inter, Crimson_Text, Pacifico } from 'next/font/google';
+import {
+  Atkinson_Hyperlegible,
+  DM_Serif_Text,
+  Inter,
+  Crimson_Text,
+  Merriweather,
+  Pacifico,
+} from 'next/font/google';
 import './globals.css';
 
 import { Navbar } from '@/components';
 import { ThemeSwitch } from '@/components/common/ThemeSwitch';
+import { ReadingCustomizer } from '@/components/common/ReadingCustomizer';
+import { ReadingProvider } from '@/context/reading';
 import clsx from 'clsx';
 import { Footer } from '@/components';
 import { NuqsAdapter } from 'nuqs/adapters/next';
@@ -21,6 +30,18 @@ const crimson = Crimson_Text({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-crimson',
+});
+
+const atkinson = Atkinson_Hyperlegible({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-atkinson',
+});
+
+const merriweather = Merriweather({
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
+  variable: '--font-merriweather',
 });
 
 const pacifico = Pacifico({
@@ -60,6 +81,8 @@ export default async function RootLayout({
         inter.className,
         inter.variable,
         crimson.variable,
+        atkinson.variable,
+        merriweather.variable,
         pacifico.variable,
         theme === 'dark' ? 'dark' : ''
       )}
@@ -67,12 +90,13 @@ export default async function RootLayout({
       <body className="min-h-[120vh]">
         <NuqsAdapter>
           <ThemeProvider>
-            <div className="fixed bottom-4 right-4 z-50">
+            <ReadingProvider>
+              <ReadingCustomizer />
               <ThemeSwitch />
-            </div>
-            <Navbar />
-            {children}
-            <Footer />
+              <Navbar />
+              {children}
+              <Footer />
+            </ReadingProvider>
           </ThemeProvider>
         </NuqsAdapter>
       </body>

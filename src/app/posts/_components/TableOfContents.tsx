@@ -1,4 +1,3 @@
-import * as cheerio from 'cheerio';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { Text } from '@/components';
 import { Expandable } from '@/components/ui/Expandable';
@@ -8,85 +7,71 @@ import { useToggle } from '@uidotdev/usehooks';
 import { useMemo } from 'react';
 import { slugify } from '@/utils/slugify';
 
-// Utility: Add slugified id to all headings in HTML (for completeness, but not used here)
-export function addIdsToHeadings(html: string): string {
-  const $ = cheerio.load(html);
-  $('h1, h2, h3, h4, h5, h6').each((_, el) => {
-    const text = $(el).text();
-    const id = slugify(text);
-    $(el).attr('id', id);
-  });
-  return $.html();
-}
+type TocItem = {
+  text: string;
+  id: string;
+  level: number;
+  children?: TocItem[];
+};
 
-export function extractTableOfContents(htmlString: string) {
-  const $ = cheerio.load(htmlString);
-  const headings = $('h1, h2, h3, h4, h5, h6');
-  type TocItem = {
-    text: string;
-    id: string;
-    level: number;
-    children?: TocItem[];
-  };
+export function extractTableOfContents(raw: string) {
+  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
   const toc: TocItem[] = [];
   const stack: TocItem[] = [];
+  let match;
 
-  // Iterate over each heading in order
-  headings.each((_, el) => {
-    const text = $(el).text();
-    const id = $(el).attr('id') || '';
-    const tag = el.tagName.toLowerCase();
-    const level = parseInt(tag.replace('h', ''), 10); // Get heading level (e.g. 2 for h2)
-
-    // Create a TOC item for this heading
+  while ((match = headingRegex.exec(raw)) !== null) {
+    const level = match[1].length;
+    const text = match[2].trim();
+    const id = slugify(text);
     const item: TocItem = { text, id, level, children: [] };
 
-    // Pop stack until we find a parent with a lower heading level
     while (stack.length && stack[stack.length - 1].level >= level) {
       stack.pop();
     }
 
     if (stack.length === 0) {
-      // If stack is empty, this is a top-level heading
       toc.push(item);
       stack.push(item);
     } else {
-      // Otherwise, nest this heading as a child of the last item in the stack
       stack[stack.length - 1].children!.push(item);
       stack.push(item);
     }
-  });
+  }
 
-  // The TOC is now a nested array of headings and subheadings
   return toc;
 }
 
 // Recursive component to render nested TOC
 function TocList({
   items,
+  nested = false,
 }: {
   items: { text: string; id: string; children?: any[] }[];
+  nested?: boolean;
 }) {
   if (!items || items.length === 0) return null;
   return (
-    <ul className="flex flex-col gap-2">
+    <ul
+      className={cn('flex flex-col gap-1.5', {
+        'ml-5 mt-1.5 border-l border-purple-100/60 pl-4 dark:border-grey-100/10':
+          nested,
+      })}
+    >
       {items.map((item) => (
-        <li key={item.id} className=" hover:text-purple-300">
-          <div className="group/list-item flex items-center gap-3">
+        <li key={item.id}>
+          <a
+            href={`#${item.id}`}
+            className="group/list-item flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-purple-100/40 hover:text-purple-500 dark:hover:bg-grey-100/10 dark:hover:text-purple-300"
+          >
             <HiArrowNarrowRight
-              size={14}
-              className={cn(
-                ' transition-transform group-hover/list-item:translate-x-1.5'
-              )}
+              size={12}
+              className="shrink-0 opacity-30 transition-all group-hover/list-item:translate-x-1 group-hover/list-item:opacity-100"
             />
-            <a href={`#${item.id}`} className="">
-              <Text variant="span" weight="normal">
-                {item.text}
-              </Text>
-            </a>
-          </div>
+            <span>{item.text}</span>
+          </a>
           {item.children && item.children.length > 0 && (
-            <TocList items={item.children} />
+            <TocList items={item.children} nested />
           )}
         </li>
       ))}
@@ -94,28 +79,40 @@ function TocList({
   );
 }
 
-export function TableOfContents({ htmlWithIds }: { htmlWithIds: string }) {
+export function TableOfContents({ raw }: { raw: string }) {
   const [isToggled, toggle] = useToggle(false);
-  const tableOfContents = useMemo(
-    () => extractTableOfContents(htmlWithIds),
-    [htmlWithIds]
-  );
+  const tableOfContents = useMemo(() => extractTableOfContents(raw), [raw]);
+
+  if (tableOfContents.length === 0) return null;
+
   return (
-    <div className="container mt-6 !max-w-[68ch] rounded-lg bg-grey-100/40 dark:bg-grey-100/20">
+    <div
+      className="container mt-6 overflow-hidden rounded-xl border border-purple-100/80 bg-white/60 dark:border-grey-100/10 dark:bg-grey-100/5"
+      style={{ maxWidth: 'var(--reading-content-width)' }}
+    >
       <button
+        type="button"
         onClick={() => toggle()}
-        className="flex w-full items-center justify-between p-6"
+        className="flex w-full items-center justify-between px-6 py-4 transition-colors hover:bg-purple-100/20 dark:hover:bg-grey-100/5"
       >
-        <Text variant="h5" weight="medium">
-          Table of Contents
-        </Text>
+        <div className="flex items-center gap-2.5">
+          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-purple-300 text-xs font-semibold text-white">
+            {tableOfContents.length}
+          </span>
+          <Text variant="span" weight="medium" className="text-sm">
+            Table of Contents
+          </Text>
+        </div>
         <BiChevronDown
-          size={24}
-          className={cn(['transition-transform', { 'rotate-180': isToggled }])}
+          size={20}
+          className={cn([
+            'opacity-40 transition-transform',
+            { 'rotate-180': isToggled },
+          ])}
         />
       </button>
       <Expandable expanded={isToggled}>
-        <div className="rounded-b-lg border-t border-t-grey-100/20  bg-white/30 px-6 py-6 dark:bg-grey-100/10">
+        <div className="border-t border-purple-100/60 px-4 py-4 dark:border-grey-100/10">
           <TocList items={tableOfContents} />
         </div>
       </Expandable>

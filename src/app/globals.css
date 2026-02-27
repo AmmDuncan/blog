@@ -45,13 +45,17 @@
   --color-project-c-bg: var(--color-purple-100);
   --color-tab-bg: var(--color-purple-100);
   --color-image-bg: var(--color-gray-50);
-  --h1-font-size: 44px;
-  --h2-font-size: 32px;
-  --h3-font-size: 28px;
-  --h4-font-size: 24px;
-  --h5-font-size: 20px;
-  --h6-font-size: 18px;
-  --p-font-size: 18px;
+  --reading-font-size: 18px;
+  --reading-font-family: var(--font-inter), sans-serif;
+  --reading-content-width: 68ch;
+  --reading-line-height: 1.6;
+  --p-font-size: var(--reading-font-size);
+  --h1-font-size: calc(var(--reading-font-size) * 2.44);
+  --h2-font-size: calc(var(--reading-font-size) * 1.78);
+  --h3-font-size: calc(var(--reading-font-size) * 1.44);
+  --h4-font-size: calc(var(--reading-font-size) * 1.33);
+  --h5-font-size: calc(var(--reading-font-size) * 1.11);
+  --h6-font-size: var(--reading-font-size);
 }
 
 /* @media (prefers-color-scheme: dark) { */
@@ -79,8 +83,10 @@
 }
 /* } */
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 * {
@@ -126,6 +132,10 @@ main {
   min-height: 120vh;
 }
 
+.post-body {
+  font-family: var(--reading-font-family);
+}
+
 .post-body > * {
   margin-block-start: 1.125em;
 }
@@ -162,10 +172,27 @@ main {
 
 .post-body:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-size: var(--p-font-size);
-  line-height: 1.6;
+  line-height: var(--reading-line-height);
   color: var(--color-text);
   text-wrap: pretty;
   font-weight: 350;
+}
+
+.post-body blockquote {
+  border: 1px solid var(--color-primary);
+  border-left: 3px solid var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  padding: 1.25em 1.5em;
+  border-radius: 8px;
+  margin-block: 1.5em;
+  position: relative;
+}
+
+.post-body blockquote strong {
+  font-size: var(--p-font-size);
+  display: block;
+  margin-bottom: 0.5em;
+  color: var(--color-primary);
 }
 
 .post-body a {

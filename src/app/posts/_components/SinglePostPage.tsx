@@ -1,24 +1,19 @@
 'use client';
 
 import { Post } from 'contentlayer/generated';
-import { useMemo } from 'react';
 import { Text } from '@/components';
 import { PostBody } from '@/app/_components/PostBody';
 import dayjs from 'dayjs';
 import { SocialShare } from '@/app/_components/SocialShare';
 import Image from 'next/image';
-import { addIdsToHeadings } from './TableOfContents';
 
 import { DiscussionEmbed } from 'disqus-react';
 import { useTheme } from '@/context/theme';
 import { usePostImage } from '@/hooks/usePostImage';
+import { TableOfContents } from './TableOfContents';
+import { FloatingToc } from './FloatingToc';
 
 export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
-  const htmlWithIds = useMemo(
-    () => addIdsToHeadings(currentPost?.body.html ?? ''),
-    [currentPost?.body.html]
-  );
-
   const { theme } = useTheme();
   const { featureImage } = usePostImage(currentPost);
 
@@ -26,7 +21,10 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
     <main>
       <header className="relative text-white">
         <div className="absolute left-0 top-0 z-[-1] h-4/5 w-full bg-purple-300 dark:bg-purple-300/80"></div>
-        <div className="container top-40 mx-auto flex !max-w-[68ch] flex-col gap-4 pb-5 pt-16">
+        <div
+          className="container top-40 mx-auto flex flex-col gap-4 pb-5 pt-16"
+          style={{ maxWidth: 'var(--reading-content-width)' }}
+        >
           <Text
             variant="h1"
             asVariant
@@ -75,15 +73,29 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
               className="object-cover"
             />
           </div>
+          {currentPost?.image_attribution && (
+            <p className="mt-2 text-right text-xs opacity-50">
+              {currentPost.image_attribution}
+            </p>
+          )}
           {/* Post Image::end */}
         </div>
       </header>
 
-      <section className="container !max-w-[68ch] pb-8">
-        <PostBody body={htmlWithIds} />
+      <TableOfContents raw={currentPost?.body.raw ?? ''} />
+      <FloatingToc raw={currentPost?.body.raw ?? ''} />
+
+      <section
+        className="container pb-8"
+        style={{ maxWidth: 'var(--reading-content-width)' }}
+      >
+        <PostBody code={currentPost?.body.code ?? ''} />
       </section>
 
-      <section className="container !max-w-[68ch] pb-8">
+      <section
+        className="container pb-8"
+        style={{ maxWidth: 'var(--reading-content-width)' }}
+      >
         <DiscussionEmbed
           key={theme}
           shortname="ammiels-blog"

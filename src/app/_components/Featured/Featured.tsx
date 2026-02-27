@@ -38,9 +38,12 @@ export function Featured() {
             <div className="relative h-[min(100vw,85%)] w-full transition-transform duration-300 group-hover:scale-[0.99] md:h-[min(75vw,85%)]">
               <Image
                 src={top.feature_image}
-                layout="fill"
+                fill
                 className="object-cover"
                 alt={top.title}
+                style={{
+                  objectPosition: top.feature_image_position ?? 'center',
+                }}
               />
             </div>
             <div className="absolute bottom-0 left-1/2 z-10 mx-auto -mt-[10%] w-10/12 -translate-x-1/2 rounded-lg bg-white p-8 shadow-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:bg-gradient-to-b group-hover:ring-2 group-hover:ring-purple">
@@ -90,6 +93,7 @@ function FlatCard({ post, active }: { post: Post; active?: boolean }) {
             fill
             alt=""
             src={post.feature_image}
+            style={{ objectPosition: post.feature_image_position ?? 'center' }}
           />
         </div>
 
