@@ -56,12 +56,12 @@ export const metadata: Metadata = {
   description:
     'Welcome to my space. An open look into insights from my journey.',
   openGraph: {
-    images: [process.env.NEXT_PUBLIC_BASE_URL + '/assets/og-image.png'],
+    images: [(process.env.NEXT_PUBLIC_BASE_URL ?? '') + '/assets/og-image.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    images: [process.env.NEXT_PUBLIC_BASE_URL + '/assets/og-image.png'],
+    images: [(process.env.NEXT_PUBLIC_BASE_URL ?? '') + '/assets/og-image.png'],
   },
   verification: {
     google: 'zLFDDp--tT-JPAWvEmeuj09tnYMwXA-DneHE48flTuA',
