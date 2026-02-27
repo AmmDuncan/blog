@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import TwitterIcon from '@/assets/svgs/twitter.svg';
+import XIcon from '@/assets/svgs/x.svg';
 import LinkedInIcon from '@/assets/svgs/linkedin.svg';
 import { Logo } from '../Navbar';
 
@@ -25,12 +25,12 @@ export const Footer = () => {
             Get in touch:
             <div className="flex gap-2 text-grey-300 dark:text-grey-200">
               <a
-                href={`https://twitter.com/ammduncan`}
+                href={`https://x.com/ammduncan`}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="See me on Twitter"
+                aria-label="See me on X"
               >
-                <TwitterIcon />
+                <XIcon />
               </a>
               <a
                 href={`https://www.linkedin.com/in/ammiel-yawson-098902124/`}
