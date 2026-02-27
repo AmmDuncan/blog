@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import {
   Atkinson_Hyperlegible,
   DM_Serif_Text,
@@ -88,6 +89,18 @@ export default async function RootLayout({
       )}
     >
       <body className="min-h-[120vh]">
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        />
+        <Script strategy="afterInteractive" id="ga-script">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+        </Script>
         <NuqsAdapter>
           <ThemeProvider>
             <ReadingProvider>
