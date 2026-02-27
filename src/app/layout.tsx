@@ -11,7 +11,7 @@ import './globals.css';
 
 import { Navbar } from '@/components';
 import { ThemeSwitch } from '@/components/common/ThemeSwitch';
-import { ReadingCustomizer } from '@/components/common/ReadingCustomizer';
+
 import { ReadingProvider } from '@/context/reading';
 import clsx from 'clsx';
 import { Footer } from '@/components';
@@ -91,7 +91,6 @@ export default async function RootLayout({
         <NuqsAdapter>
           <ThemeProvider>
             <ReadingProvider>
-              <ReadingCustomizer />
               <ThemeSwitch />
               <Navbar />
               {children}

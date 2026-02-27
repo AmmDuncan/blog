@@ -12,6 +12,7 @@ import { useTheme } from '@/context/theme';
 import { usePostImage } from '@/hooks/usePostImage';
 import { TableOfContents } from './TableOfContents';
 import { FloatingToc } from './FloatingToc';
+import { ReadingCustomizer } from '@/components/common/ReadingCustomizer';
 
 export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
   const { theme } = useTheme();
@@ -84,6 +85,7 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
 
       <TableOfContents raw={currentPost?.body.raw ?? ''} />
       <FloatingToc raw={currentPost?.body.raw ?? ''} />
+      <ReadingCustomizer />
 
       <section
         className="container pb-8"
