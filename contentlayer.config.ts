@@ -15,6 +15,7 @@ export const Post = defineDocumentType(() => ({
     feature_image_position: { type: 'string', required: false },
     image_attribution: { type: 'string', required: false },
     tags: { type: 'list', of: { type: 'string' }, required: true },
+    level: { type: 'enum', options: ['Beginner', 'Intermediate', 'Advanced'], required: false },
   },
   computedFields: {
     // url: { type: 'string', resolve: (post) => `/change-logs/${post._raw.flattenedPath}` },

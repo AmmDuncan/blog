@@ -23,6 +23,7 @@ export type Post = {
   feature_image_position?: string | undefined
   image_attribution?: string | undefined
   tags: string[]
+  level?: 'Beginner' | 'Intermediate' | 'Advanced' | undefined
   /** MDX file body */
   body: MDX
   slug: string

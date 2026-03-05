@@ -35,10 +35,16 @@ export function SinglePostComponent({ currentPost }: { currentPost?: Post }) {
           >
             {currentPost?.title}
           </Text>
-
           <div className="flex flex-wrap items-center justify-between opacity-70">
             {/* Author */}
-            <div className={'w-full md:w-auto'}>By {currentPost?.author}</div>
+            <div className={'flex w-full items-center gap-3 md:w-auto'}>
+              <span>By {currentPost?.author}</span>
+              {currentPost?.level && (
+                <span className="rounded-full border border-white/40 px-2.5 py-0.5 text-xs">
+                  {currentPost.level}
+                </span>
+              )}
+            </div>
             {/* Author::end */}
 
             {/* Date and time */}

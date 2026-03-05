@@ -14,7 +14,8 @@ var Post = defineDocumentType(() => ({
     feature_dark_mode_image: { type: "string", required: false },
     feature_image_position: { type: "string", required: false },
     image_attribution: { type: "string", required: false },
-    tags: { type: "list", of: { type: "string" }, required: true }
+    tags: { type: "list", of: { type: "string" }, required: true },
+    level: { type: "enum", options: ["Beginner", "Intermediate", "Advanced"], required: false }
   },
   computedFields: {
     // url: { type: 'string', resolve: (post) => `/change-logs/${post._raw.flattenedPath}` },
@@ -39,4 +40,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-S6YS2HS5.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-EU6UMFXX.mjs.map
