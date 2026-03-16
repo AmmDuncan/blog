@@ -49,7 +49,7 @@ export const BlogPostItem: React.FC<BlogPostItemProps> = ({ post }) => {
             {formatPostDate(post.created_at)}
           </span>
         </div>
-        <h2 className="mb-4 font-serif text-4xl leading-[1.1] md:text-5xl">
+        <h2 className="mb-4 font-serif text-4xl leading-[1.1] tracking-tight md:text-5xl md:tracking-normal">
           <Link
             href={`/posts/${post.slug}`}
             className="text-[var(--btn-foreground)] transition-opacity hover:text-[var(--color-primary)]"

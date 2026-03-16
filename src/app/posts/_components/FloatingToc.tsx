@@ -107,8 +107,7 @@ function TocLink({
       <a
         href={`#${item.id}`}
         onClick={onNavigate}
-        className="group/toc-link flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-purple-100/40 hover:text-purple-500 dark:hover:bg-grey-100/10 dark:hover:text-purple-300"
-        style={{ paddingLeft: `${12 + depth * 16}px` }}
+        className="group/toc-link flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm transition-colors hover:bg-purple-100/40 hover:text-purple-500 dark:hover:bg-grey-100/10 dark:hover:text-purple-300"
       >
         <HiArrowNarrowRight
           size={12}
@@ -116,14 +115,18 @@ function TocLink({
         />
         <span className="line-clamp-2">{item.text}</span>
       </a>
-      {item.children?.map((child: any) => (
-        <TocLink
-          key={child.id}
-          item={child}
-          depth={depth + 1}
-          onNavigate={onNavigate}
-        />
-      ))}
+      {item.children && item.children.length > 0 && (
+        <div className="ml-4 mt-0.5 border-l border-purple-100/60 pl-2 dark:border-grey-100/10">
+          {item.children.map((child: any) => (
+            <TocLink
+              key={child.id}
+              item={child}
+              depth={depth + 1}
+              onNavigate={onNavigate}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 }
