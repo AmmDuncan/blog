@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from '@contentlayer/source-files';
+import remarkGfm from 'remark-gfm';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -54,4 +55,5 @@ function calculateReadingTimeMarkdown(markdownText: string, wpm = 225) {
 export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
+  mdx: { remarkPlugins: [remarkGfm] },
 });
