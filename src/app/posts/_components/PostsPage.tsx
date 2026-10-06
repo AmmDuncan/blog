@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { BsArrowRight, BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { BlogPostList } from '@/app/_components/BlogPostList';
 import { Post } from 'contentlayer/generated';
@@ -50,7 +50,7 @@ export default function PostsPageComponent({
             aria-label="Show newer posts"
             type="button"
           >
-            <BsChevronLeft
+            <ChevronLeft
               size={18}
               className="transition-transform group-hover:-translate-x-1"
             />
@@ -64,7 +64,7 @@ export default function PostsPageComponent({
             type="button"
           >
             Older Posts
-            <BsChevronRight
+            <ChevronRight
               size={18}
               className="transition-transform group-hover:translate-x-1"
             />
@@ -83,7 +83,7 @@ export default function PostsPageComponent({
               className="flex items-center gap-1 text-[var(--btn-foreground)] text-purple-300 transition-opacity hover:opacity-80"
               replace
             >
-              View all <BsArrowRight size={18} />
+              View all <ArrowRight size={18} />
             </Link>
           ) : (
             <span />

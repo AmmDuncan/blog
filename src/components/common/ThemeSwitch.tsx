@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs';
+import { MoonStar, Sun } from 'lucide-react';
 import { useTheme } from '@/context/theme';
 
 export const ThemeSwitch: React.FC = () => {
@@ -21,7 +21,7 @@ export const ThemeSwitch: React.FC = () => {
         className={`duration-250 grid h-8 w-8 place-content-center rounded-full bg-[var(--color-bg)] text-[var(--switch-fg)] transition-transform ${isNight ? 'translate-x-9 text-[var(--color-primary)]' : ''}`}
         style={{ transition: 'transform 250ms ease' }}
       >
-        {isLight ? <BsSunFill size={18} /> : <BsFillMoonStarsFill size={18} />}
+        {isLight ? <Sun size={18} fill="currentColor" /> : <MoonStar size={18} fill="currentColor" />}
       </span>
     </button>
   );

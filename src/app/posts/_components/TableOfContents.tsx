@@ -1,7 +1,6 @@
-import { HiArrowNarrowRight } from 'react-icons/hi';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Text } from '@/components';
 import { Expandable } from '@/components/ui/Expandable';
-import { BiChevronDown } from 'react-icons/bi';
 import { cn } from '@/libs';
 import { useToggle } from '@uidotdev/usehooks';
 import { useMemo } from 'react';
@@ -64,7 +63,7 @@ function TocList({
             href={`#${item.id}`}
             className="group/list-item flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-purple-100/40 hover:text-purple-500 dark:hover:bg-grey-100/10 dark:hover:text-purple-300"
           >
-            <HiArrowNarrowRight
+            <ArrowRight
               size={12}
               className="shrink-0 opacity-30 transition-all group-hover/list-item:translate-x-1 group-hover/list-item:opacity-100"
             />
@@ -103,7 +102,7 @@ export function TableOfContents({ raw }: { raw: string }) {
             Table of Contents
           </Text>
         </div>
-        <BiChevronDown
+        <ChevronDown
           size={20}
           className={cn([
             'opacity-40 transition-transform',

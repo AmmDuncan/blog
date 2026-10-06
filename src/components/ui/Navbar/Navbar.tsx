@@ -2,7 +2,7 @@
 
 import { Text } from '..';
 import Link from 'next/link';
-import { HiExternalLink } from 'react-icons/hi';
+import { ExternalLink } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/libs';
 
@@ -82,7 +82,7 @@ export function Navbar() {
                   })}
                 >
                   {link.label}
-                  {link.external && <HiExternalLink />}
+                  {link.external && <ExternalLink />}
                 </Link>
               </li>
             );

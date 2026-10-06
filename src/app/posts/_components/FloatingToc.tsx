@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { HiOutlineListBullet } from 'react-icons/hi2';
-import { HiArrowNarrowRight, HiArrowNarrowUp } from 'react-icons/hi';
+import { ArrowRight, ArrowUp, List } from 'lucide-react';
 import { extractTableOfContents } from './TableOfContents';
 
 export function FloatingToc({ raw }: { raw: string }) {
@@ -52,7 +51,7 @@ export function FloatingToc({ raw }: { raw: string }) {
             : 'bg-[var(--color-bg)] text-[var(--color-text)]'
         }`}
       >
-        <HiOutlineListBullet size={18} />
+        <List size={18} />
       </button>
 
       {isOpen && (
@@ -82,7 +81,7 @@ export function FloatingToc({ raw }: { raw: string }) {
                 }}
                 className="group/toc-link flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs opacity-50 transition-colors hover:bg-purple-100/40 hover:opacity-80 dark:hover:bg-grey-100/10"
               >
-                <HiArrowNarrowUp size={12} className="shrink-0" />
+                <ArrowUp size={12} className="shrink-0" />
                 <span>Back to top</span>
               </button>
             </div>
@@ -109,7 +108,7 @@ function TocLink({
         onClick={onNavigate}
         className="group/toc-link flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm transition-colors hover:bg-purple-100/40 hover:text-purple-500 dark:hover:bg-grey-100/10 dark:hover:text-purple-300"
       >
-        <HiArrowNarrowRight
+        <ArrowRight
           size={12}
           className="shrink-0 opacity-30 transition-all group-hover/toc-link:translate-x-1 group-hover/toc-link:opacity-100"
         />
