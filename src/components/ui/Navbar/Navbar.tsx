@@ -51,6 +51,7 @@ export function Navbar() {
   const links = [
     { href: '/posts', label: 'Posts' },
     { href: 'https://ammielyawson.com', label: 'Portfolio', external: true },
+    { href: 'https://ammielyawson.com/desk', label: 'My desk', external: true },
   ];
 
   return (
@@ -69,7 +70,7 @@ export function Navbar() {
           </Text>
         </Link>
 
-        <ul className="flex gap-10">
+        <ul className="flex gap-6 sm:gap-10">
           {links.map((link) => {
             const isActive = !link.external && pathname === link.href;
             return (
